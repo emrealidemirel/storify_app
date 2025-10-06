@@ -1,0 +1,10 @@
+flutter_native_splash:
+  color: "#FFF3E0"
+  image: assets/images/storify_icon.png 
+  android_gravity: "center" 
+  ios_content_mode: "scaleAspectFit" 
+  branding: null
+  android_12:
+    color: "#FFF3E0"
+    image: assets/images/storify_icon.png 
+    android_gravity: "fitCenter"
