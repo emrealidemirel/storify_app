@@ -15,25 +15,36 @@ final class StoryInitial extends StoryState {
 }
 
 final class StoryLoading extends StoryState {
-  const StoryLoading();
+  final StoryLoaded? previousStory;
+  const StoryLoading({this.previousStory});
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [if (previousStory != null) previousStory!];
 }
 
 final class StoryLoaded extends StoryState {
   final List<String> storyText;
   final List<String> choices;
-  const StoryLoaded({required this.storyText, required this.choices});
+  final bool isGuest;
+  final String? title;
+  bool get isComplete => choices.isEmpty;
+  const StoryLoaded({
+    required this.storyText,
+    required this.choices,
+    this.isGuest = false,
+    this.title,
+  });
 
   @override
-  List<Object> get props => [storyText, choices];
+  List<Object> get props => [storyText, choices, isGuest, title ?? ""];
 }
 
 final class StoryError extends StoryState {
   final String errorMessage;
+  final bool canRetry;
 
-  const StoryError({required this.errorMessage});
+  const StoryError({required this.errorMessage, this.canRetry = true});
+
   @override
-  List<Object> get props => [errorMessage];
+  List<Object> get props => [errorMessage, canRetry];
 }

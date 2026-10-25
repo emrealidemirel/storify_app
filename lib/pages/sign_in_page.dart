@@ -1,15 +1,16 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter_story_app/pages/privacy_page.dart';
+import 'package:flutter_story_app/widgets/brand_wordmark.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_story_app/blocs/auth/auth_cubit.dart';
 import 'package:flutter_story_app/blocs/auth/auth_state.dart';
-import 'package:flutter_story_app/contants/routes.dart';
+import 'package:flutter_story_app/constants/routes.dart';
 import 'package:flutter_story_app/widgets/app_scaffold.dart';
 import 'package:flutter_story_app/widgets/sign_in_text_form_field.dart';
-import 'package:flutter_story_app/widgets/password_text_form_field.dart'; 
+import 'package:flutter_story_app/widgets/password_text_form_field.dart';
 import 'package:flutter_story_app/widgets/loading_indicator.dart';
-import 'package:flutter_story_app/widgets/sign_in_button.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -36,21 +37,26 @@ class _SignInPageState extends State<SignInPage> {
     final authCubit = context.read<AuthCubit>();
 
     return AppScaffold(
+      showDrawer: false,
       appBar: AppBar(
-        title: Text(
-          "app_title".tr(),
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
-        backgroundColor: Theme.of(context).primaryColor,
+        automaticallyImplyLeading: false,
+        title: const BrandWordmark(),
       ),
       body: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
+          if (ModalRoute.of(context)?.isCurrent != true) return;
           if (state is AuthAuthenticated) {
-            Navigator.pushReplacementNamed(context, Routes.home);
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              Routes.home,
+              (route) => false,
+            );
           } else if (state is AuthError) {
             setState(() {
               errorMessage = state.message;
             });
+          } else if (state is AuthLoading) {
+            errorMessage = null;
           }
         },
         builder: (context, state) {
@@ -58,133 +64,185 @@ class _SignInPageState extends State<SignInPage> {
             return const LoadingIndicator();
           }
 
+          final theme = Theme.of(context);
+          final scheme = theme.colorScheme;
           return SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 8.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  "sign_in_title".tr(),
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-                if (errorMessage != null) ...[
-                  SizedBox(height: 2.h),
-                  Text(
-                    errorMessage!,
-                    style: TextStyle(color: Colors.red, fontSize: 16.sp),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-                SizedBox(height: 4.h),
-                Form(
-                  key: _formKey,
+            padding: const EdgeInsets.fromLTRB(24, 12, 24, 32),
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 460),
+                child: AutofillGroup(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      SignInTextFormField(
-                        controller: _emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        labelText: "email_label".tr(),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'email_empty_error'.tr();
-                          }
-                          if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-                            return 'email_invalid_error'.tr();
-                          }
-                          return null;
-                        },
+                      const SizedBox(height: 32),
+                      Text(
+                        'sign_in_title'.tr(),
+                        style: theme.textTheme.headlineSmall,
+                        textAlign: TextAlign.center,
                       ),
-                      SizedBox(height: 1.h),
-
-                      
-                      PasswordTextFormField(
-                        controller: _passwordController,
-                        labelText: "password_label".tr(),
-                      ),
-
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, Routes.passwordReset);
-                          },
-                          child: Text(
-                            "forgot_password_link".tr(),
-                            style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                              color: Theme.of(context).primaryColor,
-                              fontWeight: FontWeight.bold,
+                      const SizedBox(height: 28),
+                      if (errorMessage != null) ...[
+                        Semantics(
+                          liveRegion: true,
+                          child: Container(
+                            padding: const EdgeInsets.all(14),
+                            decoration: BoxDecoration(
+                              color: scheme.errorContainer,
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                            child: Text(
+                              errorMessage!,
+                              style: TextStyle(color: scheme.onErrorContainer),
                             ),
                           ),
                         ),
+                        const SizedBox(height: 16),
+                      ],
+                      Form(
+                        key: _formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            SignInTextFormField(
+                              controller: _emailController,
+                              keyboardType: TextInputType.emailAddress,
+                              labelText: 'email_label'.tr(),
+                              validator: (value) {
+                                if (value == null || value.trim().isEmpty) {
+                                  return 'email_empty_error'.tr();
+                                }
+                                if (!RegExp(
+                                  r'^[^@]+@[^@]+\.[^@]+',
+                                ).hasMatch(value.trim())) {
+                                  return 'email_invalid_error'.tr();
+                                }
+                                return null;
+                              },
+                            ),
+                            const SizedBox(height: 14),
+                            PasswordTextFormField(
+                              controller: _passwordController,
+                              labelText: 'password_label'.tr(),
+                            ),
+                            const SizedBox(height: 4),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: TextButton(
+                                onPressed:
+                                    () => Navigator.pushNamed(
+                                      context,
+                                      Routes.passwordReset,
+                                    ),
+                                child: Text('forgot_password_link'.tr()),
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            ElevatedButton(
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  authCubit.signInWithEmail(
+                                    _emailController.text.trim(),
+                                    _passwordController.text,
+                                  );
+                                }
+                              },
+                              child: Text('sign_in'.tr()),
+                            ),
+                          ],
+                        ),
                       ),
-                      SizedBox(height: 1.h),
-                      SignInButton(
-                        buttonText: "sign_in".tr(),
-                        buttonColor: Theme.of(context).primaryColor,
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            authCubit.signInWithEmail(
-                              _emailController.text.trim(),
-                              _passwordController.text.trim(),
-                            );
-                          }
-                        },
+                      const SizedBox(height: 22),
+                      Row(
+                        children: [
+                          const Expanded(child: Divider()),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 14),
+                            child: Text(
+                              'auth_or'.tr(),
+                              style: theme.textTheme.bodySmall,
+                            ),
+                          ),
+                          const Expanded(child: Divider()),
+                        ],
+                      ),
+                      const SizedBox(height: 22),
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: scheme.surfaceContainerLow,
+                          foregroundColor: scheme.onSurface,
+                          side: BorderSide(color: scheme.outlineVariant),
+                          minimumSize: const Size(48, 56),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 16,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18),
+                          ),
+                        ),
+                        onPressed: () => authCubit.signInWithGoogle(),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/images/google-logo.png',
+                              width: 22,
+                              height: 22,
+                            ),
+                            const SizedBox(width: 12),
+                            Flexible(
+                              child: Text(
+                                'google_sign_in_button'.tr(),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      if (!kIsWeb &&
+                          defaultTargetPlatform == TargetPlatform.iOS) ...[
+                        OutlinedButton.icon(
+                          onPressed: authCubit.signInWithApple,
+                          icon: const Icon(Icons.apple, size: 24),
+                          label: Text('apple_sign_in'.tr()),
+                          style: OutlinedButton.styleFrom(
+                            minimumSize: const Size(48, 56),
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                      ],
+                      const PrivacyLink(),
+                      TextButton.icon(
+                        onPressed: () => authCubit.signInAnonymously(),
+                        icon: const Icon(Icons.explore_outlined, size: 20),
+                        label: Text(
+                          'auth_guest'.tr(),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      Wrap(
+                        alignment: WrapAlignment.center,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                          Text(
+                            'sign_up_question'.tr(),
+                            style: theme.textTheme.bodyMedium,
+                          ),
+                          TextButton(
+                            onPressed:
+                                () =>
+                                    Navigator.pushNamed(context, Routes.signUp),
+                            child: Text('sign_up_link'.tr()),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: 2.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'sign_up_question'.tr(),
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: Theme.of(context).colorScheme.secondary,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, Routes.signUp);
-                      },
-                      child: Text(
-                        'sign_up_link'.tr(),
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).primaryColor,
-                          decoration: TextDecoration.underline,
-                          decorationThickness: 1.2,
-                          decorationStyle: TextDecorationStyle.solid,
-                          height: 1.6,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 8.h),
-                SignInButton(
-                  buttonText: "google_sign_in_button".tr(),
-                  buttonColor: Colors.white,
-                  textColor: Colors.black.withAlpha(140),
-                  buttonIcon: Image.asset("assets/images/google-logo.png"),
-                  onPressed: () {
-                    authCubit.signInWithGoogle();
-                  },
-                ),
-                SignInButton(
-                  buttonText: "anonymous_sign_in_button".tr(),
-                  buttonIcon: Icon(Icons.supervised_user_circle, size: 30),
-                  buttonColor: Colors.grey.shade700,
-                  onPressed: () {
-                    authCubit.signInAnonymously();
-                  },
-                ),
-              ],
+              ),
             ),
           );
         },

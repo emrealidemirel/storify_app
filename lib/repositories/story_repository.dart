@@ -1,133 +1,153 @@
+import 'package:flutter_story_app/services/content_safety_service.dart';
+import 'dart:convert';
+
 import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_story_app/models/story_model.dart';
+import 'package:flutter_story_app/services/story_prompts.dart';
 
 class StoryRepository {
-  final String token = dotenv.env["GPT_TOKEN"] ?? "";
+  final bool Function() canUseAI;
+  final Future<String?> Function(ChatCompleteText request)? requestCompletion;
+  final Future<bool> Function(String input)? checkSafety;
+  StoryRepository({
+    bool Function()? canUseAI,
+    this.requestCompletion,
+    this.checkSafety,
+  }) : canUseAI = canUseAI ?? (() => false);
+
+  void _requireAccount() {
+    if (!canUseAI()) throw StateError('Registered account required.');
+  }
+
+  String get token {
+    final configuredToken = dotenv.env['GPT_TOKEN']?.trim() ?? '';
+    return configuredToken.isNotEmpty
+        ? configuredToken
+        : dotenv.env['OPENAI_API_KEY']?.trim() ?? '';
+  }
+
+  bool get isConfigured => token.trim().isNotEmpty;
 
   Future<Story?> startNewStory(
     String storyTheme,
     String gender,
     String languageCode,
-  ) async {
-    final openAI = OpenAI.instance.build(
-      token: token,
-      baseOption: HttpSetup(receiveTimeout: const Duration(seconds: 5)),
-      enableLog: true,
-    );
-
-    final prompt =
-        languageCode == "en"
-            ? """
-You are a short interactive story teller. Each story part should be exactly 20 words long. At the end of each part, present 3 short choices (1-3 words).
-
-Create a new unique story. Do not reuse previous parts or repeat the same beginning in multiple story sessions.
-
-Respond ONLY with a valid JSON in this format:
-
-{
-  "text": "short story part goes here",
-  "choices": ["choice 1", "choice 2", "choice 3"]
-}
-
-Theme: $storyTheme
-Character: $gender
-"""
-            : """
-Sen kısa bölümlerle interaktif bir hikaye anlatıcısısın. Hikaye her seferinde yalnızca 20 kelime uzunluğunda olmalı. Her bölüm sonunda kullanıcıya 3 kısa seçenek sunmalısın (1-3 kelime arası).
-
-Yeni ve benzersiz bir hikaye oluştur. Önceki bölümleri veya tekrarları kesinlikle kullanma. Aynı hikayenin başlangıcını birden fazla kez yazma.
-
-Cevabını aşağıdaki formatta, **sadece geçerli bir JSON olarak** döndür:
-
-{
-  "text": "kısa hikaye bölümü buraya gelecek",
-  "choices": ["seçenek 1", "seçenek 2", "seçenek 3"]
-}
-
-Tema: $storyTheme
-Karakter: $gender
-""";
-
-    final request = ChatCompleteText(
-      messages: [
-        {"role": "user", "content": prompt},
-      ],
-      maxToken: 200,
-      model: ChatModelFromValue(model: 'gpt-3.5-turbo'),
-    );
-
-    final response = await openAI.onChatCompletion(request: request);
-    if (response?.choices.first.message?.content != null) {
-      return storyFromJson(response!.choices.first.message!.content);
-    }
-    return null;
-  }
+  ) => _generate(
+    StoryPrompts.messages(
+      theme: storyTheme,
+      gender: gender,
+      languageCode: languageCode,
+    ),
+  );
 
   Future<Story?> continueStory(
-    String lastStory,
+    String storySoFar,
     String choice,
     String storyTheme,
     String gender,
-    String languageCode,
-  ) async {
-    final openAI = OpenAI.instance.build(
-      token: token,
-      baseOption: HttpSetup(receiveTimeout: const Duration(seconds: 5)),
-      enableLog: true,
-    );
+    String languageCode, {
+    List<String> previousChoices = const [],
+  }) => _generate(
+    StoryPrompts.messages(
+      theme: storyTheme,
+      gender: gender,
+      languageCode: languageCode,
+      storySoFar: storySoFar,
+      selectedChoice: choice,
+      previousChoices: previousChoices,
+    ),
+    previousChoices: previousChoices,
+    storySoFar: storySoFar,
+  );
 
-    final prompt =
-        languageCode == "en"
-            ? """
-Continue the following story based on the given choice. The continuation should be maximum 20 words. Always provide 3 new short choices (1-3 words).
+  static String _normalize(String text) =>
+      text
+          .replaceAll('İ', 'i')
+          .toLowerCase()
+          .replaceAll('ı', 'i')
+          .replaceAll(RegExp(r'[^\p{L}\p{N}]+', unicode: true), ' ')
+          .trim();
 
-Avoid repetition. Do not reuse previous story parts or choices.
-
-Respond ONLY with valid JSON:
-
-{
-  "text": "story continuation",
-  "choices": ["choice 1", "choice 2", "choice 3"]
-}
-
-Theme: $storyTheme
-Character: $gender
-
-Story: $lastStory  
-Choice: $choice
-"""
-            : """
-Şu hikayeyi verilen seçime göre devam ettir. Devam kısmı maksimum 20 kelime olsun. Her zaman 3 yeni kısa seçenek ver (1-3 kelime arası).
-
-Hikaye boyunca kendini tekrar etme. Önceki bölümlerde geçen metni veya seçenekleri kullanma.
-
-Lütfen cevabını geçerli bir JSON formatında döndür:
-
-{
-  "text": "hikaye devamı",
-  "choices": ["seçenek 1", "seçenek 2", "seçenek 3"]
-}
-
-Tema: $storyTheme
-Karakter: $gender
-
-Hikaye: $lastStory  
-Seçim: $choice
-""";
-
-    final request = ChatCompleteText(
-      messages: [
-        {"role": "user", "content": prompt},
-      ],
-      maxToken: 200,
-      model: ChatModelFromValue(model: 'gpt-3.5-turbo'),
-    );
-
-    final response = await openAI.onChatCompletion(request: request);
-    if (response?.choices.first.message?.content != null) {
-      return storyFromJson(response!.choices.first.message!.content);
+  Future<Story?> _generate(
+    List<Map<String, dynamic>> messages, {
+    List<String> previousChoices = const [],
+    String storySoFar = '',
+  }) async {
+    if (storySoFar.length > 90000 || previousChoices.length > 120) {
+      throw const FormatException('Story context exceeds the session limit.');
     }
-    return null;
+    final oldChoices = previousChoices.map(_normalize).toSet();
+    for (var attempt = 0; attempt < 2; attempt++) {
+      _requireAccount();
+      if (!isConfigured) throw StateError('Missing GPT_TOKEN configuration.');
+      final request = ChatCompleteText(
+        messages: messages,
+        maxToken: 300,
+        model: ChatModelFromValue(model: 'gpt-4o-mini'),
+        responseFormat: ResponseFormat.jsonObject,
+      );
+      final String? content;
+      if (requestCompletion != null) {
+        content = await requestCompletion!(request);
+      } else {
+        final openAI = OpenAI.instance.build(
+          token: token,
+          baseOption: HttpSetup(
+            connectTimeout: const Duration(seconds: 15),
+            receiveTimeout: const Duration(seconds: 30),
+          ),
+          enableLog: false,
+        );
+        final response = await openAI.onChatCompletion(request: request);
+        content =
+            response == null || response.choices.isEmpty
+                ? null
+                : response.choices.first.message?.content;
+      }
+      final story = _parseResponse(content);
+      if (story == null) return null;
+      final choices = story.choices.map(_normalize).toList();
+      final repeatedChoices =
+          choices.toSet().length != 3 || choices.any(oldChoices.contains);
+      final repeatedText =
+          storySoFar.isNotEmpty &&
+          _normalize(storySoFar).contains(_normalize(story.text));
+      if (!repeatedChoices && !repeatedText) {
+        final text = [story.text, ...story.choices].join('\n');
+        final safe =
+            await (checkSafety?.call(text) ??
+                const ContentSafetyService().isSafe(text, token));
+        if (!safe) throw const UnsafeStoryException();
+        return story;
+      }
+      messages = [
+        ...messages,
+        {'role': 'assistant', 'content': content},
+        {
+          'role': 'user',
+          'content': jsonEncode({
+            'task': 'revise',
+            'repeated_choices': repeatedChoices,
+            'repeated_passage': repeatedText,
+          }),
+        },
+      ];
+    }
+    throw const FormatException(
+      'The story response repeated existing content.',
+    );
+  }
+
+  Story? _parseResponse(String? content) {
+    if (content == null || content.trim().isEmpty) return null;
+
+    final trimmed = content.trim();
+    final jsonStart = trimmed.indexOf('{');
+    final jsonEnd = trimmed.lastIndexOf('}');
+    if (jsonStart < 0 || jsonEnd < jsonStart) {
+      throw const FormatException('The story response was not valid JSON.');
+    }
+    return storyFromJson(trimmed.substring(jsonStart, jsonEnd + 1));
   }
 }

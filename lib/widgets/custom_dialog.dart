@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CustomDialog extends StatelessWidget {
   final Widget title;
@@ -17,22 +16,22 @@ class CustomDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.w)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
       title: DefaultTextStyle(
         style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).colorScheme.primary,
         ),
         child: title,
       ),
       content: SingleChildScrollView(
         child: Column(mainAxisSize: MainAxisSize.min, children: content),
       ),
-      actionsPadding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.h),
+      actionsPadding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
       actions:
           actions
               .map(
                 (e) => Padding(
-                  padding: EdgeInsets.only(left: 2.w),
+                  padding: const EdgeInsets.only(left: 8),
                   child: Theme(
                     data: Theme.of(context).copyWith(
                       textButtonTheme: TextButtonThemeData(
@@ -74,42 +73,5 @@ Future<T?> showCustomDialog<T>({
   );
 }
 
-InputDecoration customInputDecoration(String labelText, BuildContext context) {
-  final isDark = Theme.of(context).brightness == Brightness.dark;
-  final labelColor =
-      isDark ? Colors.white.withAlpha(180) : Colors.black.withAlpha(140);
-
-  return InputDecoration(
-    labelText: labelText,
-    labelStyle: Theme.of(
-      context,
-    ).textTheme.bodyMedium?.copyWith(color: labelColor),
-    filled: true,
-    fillColor: Theme.of(context).primaryColor.withAlpha(25),
-    contentPadding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.8.h),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4.w),
-      borderSide: BorderSide(
-        color: Theme.of(context).primaryColor,
-        width: 0.2.w,
-      ),
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4.w),
-      borderSide: BorderSide(
-        color: Theme.of(context).primaryColor,
-        width: 0.2.w,
-      ),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4.w),
-      borderSide: BorderSide(
-        color: Theme.of(context).primaryColor,
-        width: 0.2.w,
-      ),
-    ),
-    hintStyle: Theme.of(
-      context,
-    ).textTheme.bodySmall?.copyWith(color: labelColor),
-  );
-}
+InputDecoration customInputDecoration(String labelText, BuildContext context) =>
+    InputDecoration(labelText: labelText);

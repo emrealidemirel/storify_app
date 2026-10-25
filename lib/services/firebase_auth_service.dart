@@ -1,9 +1,17 @@
+import 'dart:io';
+import 'package:flutter_story_app/services/firebase_storage_service.dart';
+import 'package:flutter_story_app/services/preferences_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_story_app/repositories/auth_repository.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthService implements AuthRepository {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth;
+  final FirebaseStorageService _storage;
+
+  FirebaseAuthService({FirebaseAuth? auth, FirebaseStorageService? storage})
+    : _auth = auth ?? FirebaseAuth.instance,
+      _storage = storage ?? FirebaseStorageService();
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   @override
@@ -14,7 +22,7 @@ class FirebaseAuthService implements AuthRepository {
     try {
       final googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
-        throw FirebaseAuthException(code: 'google-signin-cancelled');
+        return null;
       }
 
       final googleAuth = await googleUser.authentication;
@@ -30,6 +38,41 @@ class FirebaseAuthService implements AuthRepository {
     } catch (_) {
       throw FirebaseAuthException(code: 'auth_error_google_signin_failed');
     }
+  }
+
+  @override
+  Future<User?> signInWithApple() async {
+    try {
+      return (await _auth.signInWithProvider(AppleAuthProvider())).user;
+    } on FirebaseAuthException catch (error) {
+      if (error.code == 'canceled' || error.code == 'web-context-cancelled') {
+        return null;
+      }
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> sendEmailVerification() async {
+    final user = _auth.currentUser;
+    if (user == null || user.isAnonymous) {
+      throw FirebaseAuthException(code: 'no-user');
+    }
+    if (!user.emailVerified) await user.sendEmailVerification();
+  }
+
+  @override
+  Future<void> updateProfile({String? displayName, File? image}) async {
+    final user = _auth.currentUser;
+    if (user == null || user.isAnonymous) {
+      throw FirebaseAuthException(code: 'no-user');
+    }
+    if (displayName != null) await user.updateDisplayName(displayName);
+    if (image != null) {
+      final url = await _storage.uploadProfileImage(image, user.uid);
+      await user.updatePhotoURL(url);
+    }
+    await user.reload();
   }
 
   @override
@@ -77,8 +120,12 @@ class FirebaseAuthService implements AuthRepository {
   @override
   Future<void> signOut() async {
     try {
+      try {
+        await _googleSignIn.signOut();
+      } catch (_) {
+        // Firebase sign-out still needs to complete if Google cache cleanup fails.
+      }
       await _auth.signOut();
-      await _googleSignIn.signOut();
     } on FirebaseAuthException {
       rethrow;
     } catch (_) {
@@ -97,16 +144,11 @@ class FirebaseAuthService implements AuthRepository {
     }
   }
 
-  Future<void> updateProfilePhoto(String downloadUrl) async {
-    final user = _auth.currentUser;
-    if (user != null) {
-      await user.updatePhotoURL(downloadUrl);
-      await user.reload();
-    }
-  }
-
   @override
-  Future<void> verifyAndUpdateEmail(String newEmail, String currentPassword) async {
+  Future<void> verifyAndUpdateEmail(
+    String newEmail,
+    String currentPassword,
+  ) async {
     final user = _auth.currentUser;
     if (user == null) throw FirebaseAuthException(code: 'no-user');
 
@@ -122,12 +164,18 @@ class FirebaseAuthService implements AuthRepository {
     } on FirebaseAuthException catch (e) {
       throw FirebaseAuthException(code: e.code, message: e.message);
     } catch (_) {
-      throw FirebaseAuthException(code: 'auth_error_general', message: 'Beklenmeyen bir hata oluştu');
+      throw FirebaseAuthException(
+        code: 'auth_error_general',
+        message: 'Beklenmeyen bir hata oluştu',
+      );
     }
   }
 
   @override
-  Future<void> updatePassword(String currentPassword, String newPassword) async {
+  Future<void> updatePassword(
+    String currentPassword,
+    String newPassword,
+  ) async {
     final user = _auth.currentUser;
     if (user == null) throw FirebaseAuthException(code: 'no-user');
 
@@ -143,36 +191,72 @@ class FirebaseAuthService implements AuthRepository {
     } on FirebaseAuthException catch (e) {
       throw FirebaseAuthException(code: e.code, message: e.message);
     } catch (_) {
-      throw FirebaseAuthException(code: 'auth_error_general', message: 'Beklenmeyen bir hata oluştu');
+      throw FirebaseAuthException(
+        code: 'auth_error_general',
+        message: 'Beklenmeyen bir hata oluştu',
+      );
     }
   }
 
   @override
   Future<void> deleteAccount([String? currentPassword]) async {
-    final user = FirebaseAuth.instance.currentUser;
+    final user = _auth.currentUser;
     if (user == null) throw FirebaseAuthException(code: 'no-user');
 
     try {
-      final provider = user.providerData.first.providerId;
+      final providers =
+          user.providerData.map((data) => data.providerId).toSet();
 
-      if (provider == 'password') {
+      if (providers.contains('password')) {
         if (currentPassword == null || currentPassword.isEmpty) {
           throw FirebaseAuthException(code: 'missing-password');
         }
+        final email = user.email;
+        if (email == null || email.isEmpty) {
+          throw FirebaseAuthException(code: 'invalid-email');
+        }
 
         final cred = EmailAuthProvider.credential(
-          email: user.email!,
+          email: email,
           password: currentPassword,
         );
 
         await user.reauthenticateWithCredential(cred);
+      } else if (providers.contains('google.com')) {
+        final googleUser = await _googleSignIn.signIn();
+        if (googleUser == null) {
+          throw FirebaseAuthException(code: 'reauthentication-required');
+        }
+
+        final googleAuth = await googleUser.authentication;
+        final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken,
+          idToken: googleAuth.idToken,
+        );
+        await user.reauthenticateWithCredential(credential);
+      } else if (providers.contains('apple.com')) {
+        final result = await user.reauthenticateWithProvider(
+          AppleAuthProvider(),
+        );
+        final authorizationCode = result.additionalUserInfo?.authorizationCode;
+        if (authorizationCode == null || authorizationCode.isEmpty) {
+          throw FirebaseAuthException(code: 'reauthentication-required');
+        }
+        await _auth.revokeTokenWithAuthorizationCode(authorizationCode);
       }
 
+      // Delete while the user still has permission. A failed cleanup must not
+      // turn into a misleading successful account deletion; retry is safe.
+      await _storage.deleteUserData(user.uid);
+      await PreferencesService.clearUserData();
       await user.delete();
     } on FirebaseAuthException catch (e) {
       throw FirebaseAuthException(code: e.code, message: e.message);
     } catch (_) {
-      throw FirebaseAuthException(code: 'auth_error_general', message: 'Beklenmeyen bir hata oluştu');
+      throw FirebaseAuthException(
+        code: 'auth_error_general',
+        message: 'Beklenmeyen bir hata oluştu',
+      );
     }
   }
 }

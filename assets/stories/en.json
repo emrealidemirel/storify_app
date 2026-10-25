@@ -1,0 +1,1178 @@
+{
+  "theme_adventure": {
+    "title": "The Lost Beacon",
+    "nodes": {
+      "start": {
+        "text": "{name}, fisher Ece brought you to the island as a storm approached. A cargo ship waited offshore because the lighthouse was dark. You carried its old plans and a handheld radio; first, you needed to reach the tower.",
+        "choices": [
+          {
+            "label": "Take the coastal path",
+            "next": "route0"
+          },
+          {
+            "label": "Cross the stone bridge",
+            "next": "route1"
+          },
+          {
+            "label": "Find the maintenance road",
+            "next": "route2"
+          }
+        ]
+      },
+      "route0": {
+        "text": "Waves covered the lower path. Ece pointed out a higher trail, and together you reached the tower. A maintenance notice beside its entrance explained that a backup battery could power the lamp during an outage.",
+        "choices": [
+          {
+            "label": "Inspect the mechanism",
+            "next": "prepare0"
+          },
+          {
+            "label": "Contact the captain",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route1": {
+        "text": "The stone bridge held, but the wind forced you close to its railing. You and Ece crossed carefully and reached the tower. Its maintenance notice said the backup battery was ready, but the beam needed manual alignment.",
+        "choices": [
+          {
+            "label": "Inspect the mechanism",
+            "next": "prepare0"
+          },
+          {
+            "label": "Contact the captain",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route2": {
+        "text": "The dashed line on your plans led to a maintenance road between the trees. You and Ece reached the tower and read its notice: the backup battery was charged, but the automatic beam alignment motor had failed.",
+        "choices": [
+          {
+            "label": "Inspect the mechanism",
+            "next": "prepare0"
+          },
+          {
+            "label": "Contact the captain",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "prepare0": {
+        "text": "You studied the maintenance plans without opening the electrical panel. The main beam could be aimed manually, and Ece found a portable signal lamp by the entrance. You could guide the ship from the tower or mark the channel from the pier.",
+        "choices": [
+          {
+            "label": "Align the main beam",
+            "next": "action0"
+          },
+          {
+            "label": "Prepare a pier signal",
+            "next": "action1"
+          }
+        ]
+      },
+      "prepare1": {
+        "text": "The captain answered your radio and identified two safe reference points on the chart: the tower beam and the pier outside the rocks. Ece checked the portable signal lamp by the entrance. Either route could now guide the ship.",
+        "choices": [
+          {
+            "label": "Align the main beam",
+            "next": "action0"
+          },
+          {
+            "label": "Prepare a pier signal",
+            "next": "action1"
+          }
+        ]
+      },
+      "action0": {
+        "text": "Ece powered the lamp from the backup battery while you turned its wheel to the angle on the plans. The beam marked the safe channel. The captain confirmed he could see it; you still needed a reliable way to coordinate the crossing.",
+        "choices": [
+          {
+            "label": "Give directions by radio",
+            "next": "resolve0"
+          },
+          {
+            "label": "Agree on light signals",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "action1": {
+        "text": "You took the signal lamp back to the pier with Ece. Braced against its railing, the light marked the entrance on the captain’s chart. The ship reached the safe channel; now you needed to coordinate its passage.",
+        "choices": [
+          {
+            "label": "Give directions by radio",
+            "next": "resolve0"
+          },
+          {
+            "label": "Agree on light signals",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "resolve0": {
+        "text": "You called out the charted buoys, and the captain confirmed each turn over the radio. Once the ship docked safely, Ece finally relaxed. The next morning, the village leader asked how you could help prevent another dangerous arrival.",
+        "choices": [
+          {
+            "label": "Organize lighthouse repairs",
+            "next": "end0"
+          },
+          {
+            "label": "Plan a backup guide",
+            "next": "end1"
+          }
+        ]
+      },
+      "resolve1": {
+        "text": "Over the radio, you agreed that a short flash meant proceed and a long flash meant stop. The ship followed the signals safely into port. Next morning, the village leader asked for a lasting plan rather than relying on another improvised rescue.",
+        "choices": [
+          {
+            "label": "Organize lighthouse repairs",
+            "next": "end0"
+          },
+          {
+            "label": "Plan a backup guide",
+            "next": "end1"
+          }
+        ]
+      },
+      "end0": {
+        "text": "You gave the plans to a qualified electrician and helped the village gather repair supplies. A week later, the beacon ran automatically again. Ece invited you to its first watch, where you followed the ships with warm tea instead of worry.",
+        "choices": []
+      },
+      "end1": {
+        "text": "You and Ece updated the channel chart and arranged a watch for the signal lamp. The backup system kept the harbour working until the lighthouse was repaired. Months later, you returned to find both your names in the pier’s navigation handbook.",
+        "choices": []
+      }
+    }
+  },
+  "theme_fantasy": {
+    "title": "Seed of the Moon Tree",
+    "nodes": {
+      "start": {
+        "text": "{name}, as the moon tree dimmed, the forest paths began to fade. Its keeper gave you a silver seed and a small lantern. The seed awakened only through a remembered kindness; three old friends might know how to begin.",
+        "choices": [
+          {
+            "label": "Visit the lake keeper",
+            "next": "route0"
+          },
+          {
+            "label": "Visit the fox’s den",
+            "next": "route1"
+          },
+          {
+            "label": "Consult the stargazer",
+            "next": "route2"
+          }
+        ]
+      },
+      "route0": {
+        "text": "The lake keeper asked how you had once helped an injured bird. As you told the memory, a narrow path appeared across the water. You followed it back to the tree and felt the seed grow warm for the first time.",
+        "choices": [
+          {
+            "label": "Tell the tree your memory",
+            "next": "prepare0"
+          },
+          {
+            "label": "Gather the forest friends",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route1": {
+        "text": "The fox still kept the water bowl you had left by its den during winter. Remembering that day together warmed the seed in your palm. The fox escorted you back to the tree, where faint lines appeared along its roots.",
+        "choices": [
+          {
+            "label": "Tell the tree your memory",
+            "next": "prepare0"
+          },
+          {
+            "label": "Gather the forest friends",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route2": {
+        "text": "The stargazer reminded you of the time you guided a lost apprentice home. As you recalled it, the seed warmed and rootlike lines shone on the star chart. You carried the chart back to the waiting keeper.",
+        "choices": [
+          {
+            "label": "Tell the tree your memory",
+            "next": "prepare0"
+          },
+          {
+            "label": "Gather the forest friends",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "prepare0": {
+        "text": "You rested a hand against the bark and told your memory. A thin thread of light reached from the seed into the roots. The keeper explained that it could now become one strong sapling or share its light among three smaller trees.",
+        "choices": [
+          {
+            "label": "Root one new sapling",
+            "next": "action0"
+          },
+          {
+            "label": "Share light among saplings",
+            "next": "action1"
+          }
+        ]
+      },
+      "prepare1": {
+        "text": "The keeper rang the forest bell to summon your friends. As they recalled small acts of kindness, the seed brightened and the roots stirred. The keeper offered two possibilities: one strong new sapling or three smaller trees sharing the light.",
+        "choices": [
+          {
+            "label": "Root one new sapling",
+            "next": "action0"
+          },
+          {
+            "label": "Share light among saplings",
+            "next": "action1"
+          }
+        ]
+      },
+      "action0": {
+        "text": "You planted the seed in soft soil beside the old tree. A silver-leaved sapling rose, joining its roots to the elder and restoring the paths. The keeper warned that its new light needed protection until sunrise.",
+        "choices": [
+          {
+            "label": "Keep watch with friends",
+            "next": "resolve0"
+          },
+          {
+            "label": "Make a lantern circle",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "action1": {
+        "text": "You placed three saplings around the seed as the keeper instructed. Silver light travelled through their roots, bringing the fading paths back into view. The wind was strengthening, and the new light needed protection until dawn.",
+        "choices": [
+          {
+            "label": "Keep watch with friends",
+            "next": "resolve0"
+          },
+          {
+            "label": "Make a lantern circle",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "resolve0": {
+        "text": "The keeper summoned your friends again. You took turns watching the roots and sharing memories, each voice strengthening the light. At sunrise the trees shone on their own. Only the question of remembering the night remained.",
+        "choices": [
+          {
+            "label": "Start a memory book",
+            "next": "end0"
+          },
+          {
+            "label": "Arrange a yearly gathering",
+            "next": "end1"
+          }
+        ]
+      },
+      "resolve1": {
+        "text": "The keeper added three lanterns to yours. You arranged their sheltering circle around the trees until the wind eased. By morning the roots held firmly. Now you could choose how to keep the kindness behind their light from being forgotten.",
+        "choices": [
+          {
+            "label": "Start a memory book",
+            "next": "end0"
+          },
+          {
+            "label": "Arrange a yearly gathering",
+            "next": "end1"
+          }
+        ]
+      },
+      "end0": {
+        "text": "The keeper brought an empty bark-bound book. You recorded the night on its first page, and your friends added their memories. Left in the tree’s hollow, it helped travellers find both their paths and new ways to help one another.",
+        "choices": []
+      },
+      "end1": {
+        "text": "You promised to gather beneath the trees on the same spring night each year. When you returned, the fox’s cubs joined you. Everyone brought a story of kindness, and the shining paths no longer depended on one person’s memory.",
+        "choices": []
+      }
+    }
+  },
+  "theme_mystery": {
+    "title": "The Thirteenth Letter",
+    "nodes": {
+      "start": {
+        "text": "{name}, librarian Selin asked for your help at closing time. An archive book had appeared on a different shelf three nights running. An unsigned note inside mentioned a family keepsake in the clock tower, which would close for repairs tomorrow.",
+        "choices": [
+          {
+            "label": "Inspect the book records",
+            "next": "route0"
+          },
+          {
+            "label": "Talk to the night guard",
+            "next": "route1"
+          },
+          {
+            "label": "Consult the tower keeper",
+            "next": "route2"
+          }
+        ]
+      },
+      "route0": {
+        "text": "The lending ledger named the retired clockmaker as the last borrower. You showed Selin a cabinet number he had added. The tower keeper confirmed it belonged to a maintenance locker and arranged access for both of you. When Selin called the night guard, he admitted moving the book to draw attention to it.",
+        "choices": [
+          {
+            "label": "Visit the tower with Selin",
+            "next": "prepare0"
+          },
+          {
+            "label": "Phone the clockmaker first",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route1": {
+        "text": "The night guard admitted finding the book during preparations and moving it so someone would notice the number. He apologized when Selin explained her worry, then gave you the maintenance locker number and the tower keeper’s access permission.",
+        "choices": [
+          {
+            "label": "Visit the tower with Selin",
+            "next": "prepare0"
+          },
+          {
+            "label": "Phone the clockmaker first",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route2": {
+        "text": "The tower keeper recognized the note’s handwriting as the retired clockmaker’s. The cabinet number inside the book confirmed the connection. You called Selin to join you, and the keeper authorized you both to inspect the locker. When Selin called the night guard, he admitted moving the book to draw attention to it.",
+        "choices": [
+          {
+            "label": "Visit the tower with Selin",
+            "next": "prepare0"
+          },
+          {
+            "label": "Phone the clockmaker first",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "prepare0": {
+        "text": "The keeper opened the locker when you and Selin arrived. Inside were thirteen sealed letters and the clockmaker’s delivery ledger. The recipients shared Selin’s surname. Before opening anything, you needed to confirm who owned the collection.",
+        "choices": [
+          {
+            "label": "Compare the delivery ledger",
+            "next": "action0"
+          },
+          {
+            "label": "Check the family records",
+            "next": "action1"
+          }
+        ]
+      },
+      "prepare1": {
+        "text": "The clockmaker explained by phone that he had feared giving the keepsake to the wrong family. At the tower, the keeper opened the locker for you and Selin. Thirteen letters and a delivery ledger waited for their owner to be verified.",
+        "choices": [
+          {
+            "label": "Compare the delivery ledger",
+            "next": "action0"
+          },
+          {
+            "label": "Check the family records",
+            "next": "action1"
+          }
+        ]
+      },
+      "action0": {
+        "text": "The address in the ledger matched the one on the back of Selin’s family photograph. Her grandmother had written the letters. The keeper formally handed her the box, and she asked for time to read them privately.",
+        "choices": [
+          {
+            "label": "Wait quietly at the library",
+            "next": "resolve0"
+          },
+          {
+            "label": "Complete the handover record",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "action1": {
+        "text": "Selin opened her family records on her phone. Her grandmother’s name, address, and dates matched the delivery ledger. The keeper gave her the box. She thanked you and said she wanted to read the letters privately first.",
+        "choices": [
+          {
+            "label": "Wait quietly at the library",
+            "next": "resolve0"
+          },
+          {
+            "label": "Complete the handover record",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "resolve0": {
+        "text": "You waited at the library until Selin returned that evening. Her grandmother had become a teacher in another city, she explained. The letters would stay with the family, but she wanted the delivery ledger preserved as part of the tower’s history.",
+        "choices": [
+          {
+            "label": "Donate the ledger to the archive",
+            "next": "end0"
+          },
+          {
+            "label": "Prepare an approved exhibition",
+            "next": "end1"
+          }
+        ]
+      },
+      "resolve1": {
+        "text": "You helped the keeper complete the handover record and left Selin a copy. Next day she explained that the letters were private and would not be published. She did, however, approve preserving the delivery ledger as part of the town’s history.",
+        "choices": [
+          {
+            "label": "Donate the ledger to the archive",
+            "next": "end0"
+          },
+          {
+            "label": "Prepare an approved exhibition",
+            "next": "end1"
+          }
+        ]
+      },
+      "end0": {
+        "text": "With Selin’s permission, you scanned and catalogued the ledger; the letters stayed in her home. The night guard returned the book to its proper shelf. A week later, Selin invited you to see family photographs, with no mystery left to solve.",
+        "choices": []
+      },
+      "end1": {
+        "text": "You, Selin, and the keeper exhibited only approved pages from the ledger. Visitors learned about the town’s tradition of safeguarding keepsakes without reading private letters. After repairs, the exhibition moved into the tower, while the family box stayed with Selin.",
+        "choices": []
+      }
+    }
+  },
+  "theme_scifi": {
+    "title": "The Last Signal",
+    "nodes": {
+      "start": {
+        "text": "{name}, you awaited evacuation from a decommissioned orbital station. A rescue ship’s automated hail repeated your name, but its crew could not locate you. Your low-power radio worked; the remaining energy could power either the directional beacon or the escape pod.",
+        "choices": [
+          {
+            "label": "Decode the call data",
+            "next": "route0"
+          },
+          {
+            "label": "Inspect the hangar log",
+            "next": "route1"
+          },
+          {
+            "label": "Query the navigation computer",
+            "next": "route2"
+          }
+        ]
+      },
+      "route0": {
+        "text": "The timestamp proved the call was live rather than an old recording. Its data showed that the ship’s position receiver was damaged. You established a voice link over the low-power radio, but rescue still required a precise rendezvous plan.",
+        "choices": [
+          {
+            "label": "Verify the energy budget",
+            "next": "prepare0"
+          },
+          {
+            "label": "Plan a route with the pilot",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route1": {
+        "text": "The hangar display confirmed that the pod had passed inspection. A nearby screen listed the rescue ship’s radio frequency. Its pilot answered: the position receiver had failed, but the ship’s manually controlled cameras still worked.",
+        "choices": [
+          {
+            "label": "Verify the energy budget",
+            "next": "prepare0"
+          },
+          {
+            "label": "Plan a route with the pilot",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route2": {
+        "text": "The computer verified the ship’s call sign and tuned your radio. The pilot explained that a damaged position receiver was hiding the station from navigation. The cameras and manual docking system worked; the crew needed a reliable reference.",
+        "choices": [
+          {
+            "label": "Verify the energy budget",
+            "next": "prepare0"
+          },
+          {
+            "label": "Plan a route with the pilot",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "prepare0": {
+        "text": "The computer set aside the power needed for life support. Enough remained for one rescue operation: the beacon could give the ship a precise optical reference, or the pod could fly a short route visible to the pilot’s cameras.",
+        "choices": [
+          {
+            "label": "Activate the directional beacon",
+            "next": "action0"
+          },
+          {
+            "label": "Prepare the escape pod",
+            "next": "action1"
+          }
+        ]
+      },
+      "prepare1": {
+        "text": "The pilot transmitted two safe rendezvous calculations. The beacon could bring the ship to the station, or the pod could meet it at a fixed point ahead. The computer confirmed that either plan preserved the station’s life-support reserve.",
+        "choices": [
+          {
+            "label": "Activate the directional beacon",
+            "next": "action0"
+          },
+          {
+            "label": "Prepare the escape pod",
+            "next": "action1"
+          }
+        ]
+      },
+      "action0": {
+        "text": "You aimed the beacon’s optical transmitter at the ship. The pilot followed it toward the station, locked the target on camera, and stopped the automatic approach. Both sides still needed to verify speed and docking-latch indicators.",
+        "choices": [
+          {
+            "label": "Read the checklist together",
+            "next": "resolve0"
+          },
+          {
+            "label": "Cross-check the docking indicators",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "action1": {
+        "text": "After completing the checks, you launched the pod toward the agreed point. The pilot found you on camera and approached slowly. Your radio link held; before the vehicles joined, both sides needed to verify speed and latch indicators.",
+        "choices": [
+          {
+            "label": "Read the checklist together",
+            "next": "resolve0"
+          },
+          {
+            "label": "Cross-check the docking indicators",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "resolve0": {
+        "text": "The pilot read each checklist item while you reported your readings. Relative speed reached zero and the latches locked. Once pressure equalized, you entered the rescue ship. After a medical check, the captain asked what should happen to the station’s records.",
+        "choices": [
+          {
+            "label": "Document the failure technically",
+            "next": "end0"
+          },
+          {
+            "label": "Write a crew rescue guide",
+            "next": "end1"
+          }
+        ]
+      },
+      "resolve1": {
+        "text": "You compared your latch readings with the pilot’s. Only after both confirmed a secure connection did the hatches open and let you aboard. Once you had rested, the captain asked how your experience could help the next rescue crew.",
+        "choices": [
+          {
+            "label": "Document the failure technically",
+            "next": "end0"
+          },
+          {
+            "label": "Write a crew rescue guide",
+            "next": "end1"
+          }
+        ]
+      },
+      "end0": {
+        "text": "You documented the receiver failure and the calculations behind your rescue. Before you reached Earth, the fleet approved backup optical markers. Watching the station shrink through the window, you knew your last signal had done more than bring you home.",
+        "choices": []
+      },
+      "end1": {
+        "text": "You and the pilot wrote a clear rendezvous guide and tested every step in simulation. It became part of new crew training. When Earth appeared, your name sounded over the radio once more; this time, the port controller was welcoming you home.",
+        "choices": []
+      }
+    }
+  },
+  "theme_horror": {
+    "title": "The Radio Upstairs",
+    "nodes": {
+      "start": {
+        "text": "{name}, you escaped the rain through an old guesthouse’s open door. In the lobby stood a guestbook, a room key, and stairs to the upper floor. A radio upstairs repeated the sentence you had just spoken, in your own voice.",
+        "choices": [
+          {
+            "label": "Find the room on the key",
+            "next": "route0"
+          },
+          {
+            "label": "Inspect the guestbook",
+            "next": "route1"
+          },
+          {
+            "label": "Listen from the stairs",
+            "next": "route2"
+          }
+        ]
+      },
+      "route0": {
+        "text": "Room seven, the number on your key, held the radio. An old cassette lay beside a warning: whenever the same voice repeated, the night began again. When the clock returned to 11:10, you realized it was no prank.",
+        "choices": [
+          {
+            "label": "Decipher the frequency notes",
+            "next": "prepare0"
+          },
+          {
+            "label": "Count the repeated sounds",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route1": {
+        "text": "The guestbook’s last page carried the same date three times and a note about radio repetitions in room seven. You took the key upstairs. Beside an old cassette on the desk, a clock restarted the same minute over and over.",
+        "choices": [
+          {
+            "label": "Decipher the frequency notes",
+            "next": "prepare0"
+          },
+          {
+            "label": "Count the repeated sounds",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route2": {
+        "text": "You took the lobby key and climbed the stairs. On the stairs, you noticed the radio copying even the pauses between your breaths. Room seven stood ajar. Inside, a note beside an old cassette explained that the clock turned back after each completed repetition.",
+        "choices": [
+          {
+            "label": "Decipher the frequency notes",
+            "next": "prepare0"
+          },
+          {
+            "label": "Count the repeated sounds",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "prepare0": {
+        "text": "A chart beside the radio marked two interruptions: an unfamiliar melody and the static between stations. Either could break the recorded voice. The final instruction was clear: once the clock moved forward, you had to stop speaking.",
+        "choices": [
+          {
+            "label": "Hum an unfamiliar tune",
+            "next": "action0"
+          },
+          {
+            "label": "Turn the dial to static",
+            "next": "action1"
+          }
+        ]
+      },
+      "prepare1": {
+        "text": "On the third repetition, a burst of static made the clock advance one second. A note beside the radio said an unrecorded melody could do the same. Once the loop broke, it warned, you had to remain silent.",
+        "choices": [
+          {
+            "label": "Hum an unfamiliar tune",
+            "next": "action0"
+          },
+          {
+            "label": "Turn the dial to static",
+            "next": "action1"
+          }
+        ]
+      },
+      "action0": {
+        "text": "You hummed a few improvised notes. The recording faltered as the radio tried to catch them, and you fell silent. The clock reached 11:11; the corridor doors settled into place. To find the exit, you needed a reliable sign.",
+        "choices": [
+          {
+            "label": "Follow the exit signs",
+            "next": "resolve0"
+          },
+          {
+            "label": "Follow the cool draught",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "action1": {
+        "text": "You held the dial between stations. Static covered your recorded voice, and the clock advanced to 11:11. Silent, you entered the corridor; stairs had appeared against a wall that looked blank before. You still needed the true way out.",
+        "choices": [
+          {
+            "label": "Follow the exit signs",
+            "next": "resolve0"
+          },
+          {
+            "label": "Follow the cool draught",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "resolve0": {
+        "text": "The newly visible signs led you to the lobby door. Outside, the rain had stopped. As you stepped onto the pavement, the room key cooled in your hand. Every guesthouse window behind you was completely dark.",
+        "choices": [
+          {
+            "label": "Report the guesthouse",
+            "next": "end0"
+          },
+          {
+            "label": "Take the key to the museum",
+            "next": "end1"
+          }
+        ]
+      },
+      "resolve1": {
+        "text": "You went downstairs and followed the cool air to the open lobby door. Outside, the key in your hand carried the building’s old address instead of a room number. Beneath a streetlight, you finally allowed yourself a full breath.",
+        "choices": [
+          {
+            "label": "Report the guesthouse",
+            "next": "end0"
+          },
+          {
+            "label": "Take the key to the museum",
+            "next": "end1"
+          }
+        ]
+      },
+      "end0": {
+        "text": "Next morning, you showed the building to the authorities and surrendered the key. They secured the entrance. Your own clock never turned back that night, although the guesthouse’s upstairs curtain moved once in the television report.",
+        "choices": []
+      },
+      "end1": {
+        "text": "The museum curator matched your key to records of a guesthouse closed years earlier and placed it behind glass. As you left, the wall clock stopped once. The curator covered the case, and both hands began moving again.",
+        "choices": []
+      }
+    }
+  },
+  "theme_romantic": {
+    "title": "After the Rain",
+    "nodes": {
+      "start": {
+        "text": "{name}, a sealed envelope slipped from a travel book you opened at the secondhand shop. Just then, Deniz arrived to ask about a missing letter. Rain began outside, and the shop would close in ten minutes.",
+        "choices": [
+          {
+            "label": "Hand Deniz the envelope",
+            "next": "route0"
+          },
+          {
+            "label": "Ask about the book’s owner",
+            "next": "route1"
+          },
+          {
+            "label": "Offer to share your umbrella",
+            "next": "route2"
+          }
+        ]
+      },
+      "route0": {
+        "text": "Deniz relaxed when you returned the envelope unopened. It held a thank-you letter to a teacher, forgotten while checking an address. Deniz bought the book, and your shared interest in travel writing suggested continuing the conversation somewhere nearby.",
+        "choices": [
+          {
+            "label": "Go to the corner café",
+            "next": "prepare0"
+          },
+          {
+            "label": "Walk through the covered arcade",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route1": {
+        "text": "The bookseller explained that the book was reserved for Deniz. You returned the envelope and learned it had been forgotten while checking a teacher’s address. You both wanted to visit its coastal town. Deniz bought the book as closing time arrived.",
+        "choices": [
+          {
+            "label": "Go to the corner café",
+            "next": "prepare0"
+          },
+          {
+            "label": "Walk through the covered arcade",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route2": {
+        "text": "You returned the envelope, then offered to share your umbrella while Deniz bought the book. Deniz accepted. Beneath the awning, you discovered a shared interest in its coastal town and began looking for somewhere to continue the conversation.",
+        "choices": [
+          {
+            "label": "Go to the corner café",
+            "next": "prepare0"
+          },
+          {
+            "label": "Walk through the covered arcade",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "prepare0": {
+        "text": "You found a window table in the café. Deniz tucked the letter safely into their bag, and neither of you seemed eager to end the conversation. The book on the table offered an easy starting point.",
+        "choices": [
+          {
+            "label": "Share a favourite journey",
+            "next": "action0"
+          },
+          {
+            "label": "Hear Deniz’s recommendation",
+            "next": "action1"
+          }
+        ]
+      },
+      "prepare1": {
+        "text": "The arcade’s glass roof sheltered you from the rain. Deniz put the letter away and showed you the book. You paused on a quiet bench, finding enough space in the crowd’s murmur to keep talking.",
+        "choices": [
+          {
+            "label": "Share a favourite journey",
+            "next": "action0"
+          },
+          {
+            "label": "Hear Deniz’s recommendation",
+            "next": "action1"
+          }
+        ]
+      },
+      "action0": {
+        "text": "You recalled getting lost on the coast and finding your way through a tiny bookshop. Smiling, Deniz mentioned the bookseller’s Saturday event and invited you along. Its programme offered a reading circle and a short literary neighbourhood walk.",
+        "choices": [
+          {
+            "label": "Join the reading circle",
+            "next": "resolve0"
+          },
+          {
+            "label": "Choose the neighbourhood walk",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "action1": {
+        "text": "You listened as Deniz explained why a favourite travel essay rewarded rereading: a city began with small details. Deniz invited you to the bookseller’s Saturday event, where you could choose between a reading circle and a neighbourhood walk.",
+        "choices": [
+          {
+            "label": "Join the reading circle",
+            "next": "resolve0"
+          },
+          {
+            "label": "Choose the neighbourhood walk",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "resolve0": {
+        "text": "On Saturday, you read short passages from different books at the same table. Deniz asked permission to copy your chosen line. Afterward, you both said you wanted to meet again and began considering a plan together.",
+        "choices": [
+          {
+            "label": "Choose your next shared book",
+            "next": "end0"
+          },
+          {
+            "label": "Suggest a coastal day trip",
+            "next": "end1"
+          }
+        ]
+      },
+      "resolve1": {
+        "text": "On Saturday’s guided walk, you and Deniz kept pausing at the same details and laughing together. You lingered in the square afterward. Both of you openly wanted to meet again, making another shared plan feel easy.",
+        "choices": [
+          {
+            "label": "Choose your next shared book",
+            "next": "end0"
+          },
+          {
+            "label": "Suggest a coastal day trip",
+            "next": "end1"
+          }
+        ]
+      },
+      "end0": {
+        "text": "You chose a book to read and discuss a chapter at a time. At your next meeting, Deniz showed you a pressed leaf marking a page. You smiled at the memory of that first rain; your closeness grew through time, rather than grand promises.",
+        "choices": []
+      },
+      "end1": {
+        "text": "Deniz liked the idea, and together you chose a day and return time. A week later, you stood outside the coastal town’s little bookshop. No letter went missing this time; Deniz asked you to help choose a postcard for their teacher.",
+        "choices": []
+      }
+    }
+  },
+  "theme_historical": {
+    "title": "The Caravan Seal",
+    "nodes": {
+      "start": {
+        "text": "{name}, you were a scribe’s apprentice in an old port city. The caravan leaving that evening had not received its travel permit. Your master gave you its registration number; you needed to trace the document before the city gates closed.",
+        "choices": [
+          {
+            "label": "Ask the market copyist",
+            "next": "route0"
+          },
+          {
+            "label": "Find the courier at the inn",
+            "next": "route1"
+          },
+          {
+            "label": "Visit the harbour warehouse",
+            "next": "route2"
+          }
+        ]
+      },
+      "route0": {
+        "text": "The copyist said the courier had left the document there to shelter it from rain. Water had blurred the seal, but the registration number and cargo list were readable. You recovered the permit, though it still needed verification at the gate.",
+        "choices": [
+          {
+            "label": "Fetch the archive entry",
+            "next": "prepare0"
+          },
+          {
+            "label": "Collect the merchants’ copies",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route1": {
+        "text": "The sick courier handed you the package from his inn room. Leaking water had erased the seal, leaving the registration number and cargo list intact. The innkeeper could confirm the delivery time, but the permit itself still needed verification.",
+        "choices": [
+          {
+            "label": "Fetch the archive entry",
+            "next": "prepare0"
+          },
+          {
+            "label": "Collect the merchants’ copies",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route2": {
+        "text": "The warehouse keeper retrieved a package sent with the wrong chest. Its damp seal was unreadable, although the number and cargo list survived. You took the document and its delivery record, then set out to obtain proper verification.",
+        "choices": [
+          {
+            "label": "Fetch the archive entry",
+            "next": "prepare0"
+          },
+          {
+            "label": "Collect the merchants’ copies",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "prepare0": {
+        "text": "The archivist found the registration: permission covered twelve trade chests. He prepared a certified copy and sent you to the gate scribe. There, you were asked to compare the document with the loaded caravan before final approval.",
+        "choices": [
+          {
+            "label": "Count the loaded chests",
+            "next": "action0"
+          },
+          {
+            "label": "Compare the wagon markings",
+            "next": "action1"
+          }
+        ]
+      },
+      "prepare1": {
+        "text": "You brought the merchants’ copies to the official scribe. He checked them against his register and certified twelve trade chests. At the gate, the remaining task was to confirm that the caravan’s actual load matched the document.",
+        "choices": [
+          {
+            "label": "Count the loaded chests",
+            "next": "action0"
+          },
+          {
+            "label": "Compare the wagon markings",
+            "next": "action1"
+          }
+        ]
+      },
+      "action0": {
+        "text": "Your count revealed thirteen chests. The last bore no merchant’s seal; the caravan leader thought it might contain travel provisions. The gate scribe would not accept a guess. You needed to verify its contents and owner.",
+        "choices": [
+          {
+            "label": "Inspect the warehouse inventory",
+            "next": "resolve0"
+          },
+          {
+            "label": "Summon the loading supervisor",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "action1": {
+        "text": "The wagon markings accounted for all twelve listed chests, but an extra unmarked chest sat behind the last wagon. The caravan leader suggested it might hold provisions. The gate scribe required a definite explanation before allowing passage.",
+        "choices": [
+          {
+            "label": "Inspect the warehouse inventory",
+            "next": "resolve0"
+          },
+          {
+            "label": "Summon the loading supervisor",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "resolve0": {
+        "text": "The inventory identified the chest as shared provisions. Opening it with the supervisor present confirmed the recorded dried foods. The gate scribe offered to register it separately or let it travel later with the service wagon.",
+        "choices": [
+          {
+            "label": "Register the provisions separately",
+            "next": "end0"
+          },
+          {
+            "label": "Arrange the service wagon",
+            "next": "end1"
+          }
+        ]
+      },
+      "resolve1": {
+        "text": "The loading supervisor identified the shared provisions and produced a record matching the contents. With the discrepancy explained, the gate scribe offered two options: add a separate provisions entry or send the chest on the later service wagon.",
+        "choices": [
+          {
+            "label": "Register the provisions separately",
+            "next": "end0"
+          },
+          {
+            "label": "Arrange the service wagon",
+            "next": "end1"
+          }
+        ]
+      },
+      "end0": {
+        "text": "The gate scribe completed the provisions entry and stamped the permit. With all thirteen chests accounted for, the caravan left before sunset. That evening, your master handed you the ledger, and you signed an official entry for the first time.",
+        "choices": []
+      },
+      "end1": {
+        "text": "You recorded a meeting place and delivery time with the service driver. The caravan departed on time with twelve chests, and its provisions reached the first stop. Your master praised finding a proper alternative instead of skipping the records.",
+        "choices": []
+      }
+    }
+  },
+  "theme_comedy": {
+    "title": "The Mayor’s Goat",
+    "nodes": {
+      "start": {
+        "text": "{name}, you were hosting the town festival. Ten minutes before opening, Köpük the goat snatched the mayor’s speech folder and ran toward the stalls, with handler Efe following. Meanwhile, the band had accidentally started rehearsing a lullaby.",
+        "choices": [
+          {
+            "label": "Follow Köpük’s trail",
+            "next": "route0"
+          },
+          {
+            "label": "Ask the bandleader for help",
+            "next": "route1"
+          },
+          {
+            "label": "Ask the stall attendants",
+            "next": "route2"
+          }
+        ]
+      },
+      "route0": {
+        "text": "Loose papers led you to the vegetable stall. Efe distracted Köpük with a carrot and secured the lead. You recovered the folder, but cucumber juice had ruined the speech. With the goat safely beside Efe, you needed another opening plan.",
+        "choices": [
+          {
+            "label": "Make a brief plan with the mayor",
+            "next": "prepare0"
+          },
+          {
+            "label": "Review the event programme",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route1": {
+        "text": "The bandleader stopped the music and pointed you toward the vegetable stall. You joined Efe there; he secured Köpük and recovered the folder. Unfortunately, cucumber juice had made the speech unreadable. A few minutes remained before opening.",
+        "choices": [
+          {
+            "label": "Make a brief plan with the mayor",
+            "next": "prepare0"
+          },
+          {
+            "label": "Review the event programme",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route2": {
+        "text": "The attendants said Köpük was hunting carrots and pointed to the vegetable stall. Efe secured the goat there. You retrieved the folder from beneath the counter, but the soaked speech was unreadable. The mayor waited beside the stage for news.",
+        "choices": [
+          {
+            "label": "Make a brief plan with the mayor",
+            "next": "prepare0"
+          },
+          {
+            "label": "Review the event programme",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "prepare0": {
+        "text": "The mayor admitted the speech had been too long anyway. You could offer a thirty-second welcome or briefly introduce Köpük with Efe’s agreement. Efe confirmed that the goat could remain calmly at the side of the stage.",
+        "choices": [
+          {
+            "label": "Give a short welcome",
+            "next": "action0"
+          },
+          {
+            "label": "Introduce Köpük with Efe",
+            "next": "action1"
+          }
+        ]
+      },
+      "prepare1": {
+        "text": "The children’s choir followed the speech, and the mayor refused to delay their turn. He approved either a short welcome or a brief goat introduction with Efe. The handler agreed that Köpük could stay at the side of the stage.",
+        "choices": [
+          {
+            "label": "Give a short welcome",
+            "next": "action0"
+          },
+          {
+            "label": "Introduce Köpük with Efe",
+            "next": "action1"
+          }
+        ]
+      },
+      "action0": {
+        "text": "You welcomed everyone into the microphone. At your second sentence, the speaker played the rehearsal lullaby instead. The operator stopped the wrong recording. As the crowd laughed, the bandleader offered rhythmic help and a steward held out a megaphone.",
+        "choices": [
+          {
+            "label": "Use a band call-and-response",
+            "next": "resolve0"
+          },
+          {
+            "label": "Borrow the steward’s megaphone",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "action1": {
+        "text": "With Efe holding Köpük’s lead, you introduced the festival’s hungriest guest. The goat bleated on cue, but the speaker played the lullaby. The operator stopped the recording; the bandleader offered rhythmic help, while a steward held out a megaphone.",
+        "choices": [
+          {
+            "label": "Use a band call-and-response",
+            "next": "resolve0"
+          },
+          {
+            "label": "Borrow the steward’s megaphone",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "resolve0": {
+        "text": "After the bandleader’s short rhythm, the front rows repeated your announcement to the back. Everyone heard where the children’s choir would perform. Laughing, the mayor showed you the programme: after the choir, should the parade or the stalls begin first?",
+        "choices": [
+          {
+            "label": "Lead the parade first",
+            "next": "end0"
+          },
+          {
+            "label": "Announce the stall opening",
+            "next": "end1"
+          }
+        ]
+      },
+      "resolve1": {
+        "text": "The steward’s battery megaphone carried your announcement perfectly, and the children’s choir took its place. The mayor said the schedule could be flexible and asked whether you wanted the parade or the stalls to begin after their performance.",
+        "choices": [
+          {
+            "label": "Lead the parade first",
+            "next": "end0"
+          },
+          {
+            "label": "Announce the stall opening",
+            "next": "end1"
+          }
+        ]
+      },
+      "end0": {
+        "text": "After the choir, you led the band around the square. Köpük followed with Efe, while the mayor kept his folder firmly inside his bag. At closing, he offered you next year’s hosting job. You requested one condition: clearly labelled lullabies.",
+        "choices": []
+      },
+      "end1": {
+        "text": "You opened the stalls after the choir, and the first queue formed at the vegetable stand. Only Efe handed Köpük his allotted carrot. That evening the mayor called it the happiest festival yet. Your first note for next year read: separate goat catering.",
+        "choices": []
+      }
+    }
+  }
+}

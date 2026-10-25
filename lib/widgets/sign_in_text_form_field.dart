@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class SignInTextFormField extends StatelessWidget {
   final TextEditingController controller;
@@ -20,41 +19,27 @@ class SignInTextFormField extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 85.w,
-      child: TextFormField(
-        controller: controller,
-        keyboardType: keyboardType,
-        obscureText: obscureText,
-        validator: validator,
-        style: Theme.of(context).textTheme.bodyMedium,
-        decoration: InputDecoration(
-          labelText: labelText,
-          labelStyle: Theme.of(context).textTheme.bodyMedium,
-          filled: true,
-          fillColor: Theme.of(context).primaryColor.withAlpha(25),
-          contentPadding: EdgeInsets.symmetric(
-            horizontal: 3.w,
-            vertical: 1.8.h,
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4.w),
-            borderSide: BorderSide(
-              color: Theme.of(context).primaryColor,
-              width: 0.2.w,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4.w),
-            borderSide: BorderSide(
-              color: Theme.of(context).primaryColor,
-              width: 0.2.w,
-            ),
-          ),
-          suffixIcon: suffixIcon,
-        ),
+  Widget build(BuildContext context) => SizedBox(
+    width: double.infinity,
+    child: TextFormField(
+      controller: controller,
+      keyboardType: keyboardType,
+      obscureText: obscureText,
+      validator: validator,
+      textInputAction: TextInputAction.next,
+      autofillHints:
+          keyboardType == TextInputType.emailAddress
+              ? const [AutofillHints.email]
+              : null,
+      style: Theme.of(context).textTheme.bodyLarge,
+      decoration: InputDecoration(
+        labelText: labelText,
+        prefixIcon:
+            keyboardType == TextInputType.emailAddress
+                ? const Icon(Icons.mail_outline_rounded, size: 20)
+                : null,
+        suffixIcon: suffixIcon,
       ),
-    );
-  }
+    ),
+  );
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class PasswordTextFormField extends StatefulWidget {
@@ -26,40 +25,27 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 85.w,
+      width: double.infinity,
       child: TextFormField(
         controller: widget.controller,
         obscureText: _obscure,
-        style: Theme.of(context).textTheme.bodyMedium,
+        style: Theme.of(context).textTheme.bodyLarge,
+        enableSuggestions: false,
+        autocorrect: false,
         decoration: InputDecoration(
           labelText: widget.labelText,
-          labelStyle: Theme.of(context).textTheme.bodyMedium,
-          filled: true,
-          fillColor: Theme.of(context).primaryColor.withAlpha(25),
-          contentPadding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.8.h),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4.w),
-            borderSide: BorderSide(
-              color: Theme.of(context).primaryColor,
-              width: 0.2.w,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4.w),
-            borderSide: BorderSide(
-              color: Theme.of(context).primaryColor,
-              width: 0.2.w,
-            ),
-          ),
+          prefixIcon: const Icon(Icons.lock_outline_rounded, size: 20),
           suffixIcon: IconButton(
+            tooltip: (_obscure ? 'show_password' : 'hide_password').tr(),
             icon: Icon(
               _obscure ? Icons.visibility_off : Icons.visibility,
-              color: Colors.grey.shade600,
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
             ),
             onPressed: () => setState(() => _obscure = !_obscure),
           ),
         ),
-        validator: widget.customValidator ??
+        validator:
+            widget.customValidator ??
             (value) {
               if (value == null || value.isEmpty) {
                 return 'password_empty_error'.tr();
@@ -69,9 +55,10 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
               }
               return null;
             },
-        autovalidateMode: widget.autoValidate == true
-            ? AutovalidateMode.onUserInteraction
-            : AutovalidateMode.disabled,
+        autovalidateMode:
+            widget.autoValidate == true
+                ? AutovalidateMode.onUserInteraction
+                : AutovalidateMode.disabled,
       ),
     );
   }

@@ -1,0 +1,1178 @@
+{
+  "theme_adventure": {
+    "title": "Kayıp Fener",
+    "nodes": {
+      "start": {
+        "text": "{name}, fırtına yaklaşırken balıkçı Ece seni adanın iskelesine çıkardı. Açıkta bekleyen yük gemisi, sönmüş fener yüzünden limana giremiyordu. Eski fener planı ve el telsizi çantandaydı; önce kuleye ulaşmalıydın.",
+        "choices": [
+          {
+            "label": "Kıyı patikasını izle",
+            "next": "route0"
+          },
+          {
+            "label": "Taş köprüden geç",
+            "next": "route1"
+          },
+          {
+            "label": "Bakım yolunu bul",
+            "next": "route2"
+          }
+        ]
+      },
+      "route0": {
+        "text": "Kıyıdaki yürüyüş yolunu dalgalar kaplamıştı. Ece, suyun henüz ulaşmadığı üst patikayı gösterdi. Birlikte kuleye çıktınız; girişteki bakım levhası, elektrik kesilince lambanın yedek bataryayla çalışabildiğini söylüyordu.",
+        "choices": [
+          {
+            "label": "Mekanizmayı kontrol et",
+            "next": "prepare0"
+          },
+          {
+            "label": "Kaptanla bağlantı kur",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route1": {
+        "text": "Taş köprü sağlamdı, fakat rüzgâr korkuluğa yaslanmanı gerektiriyordu. Ece ile dikkatle geçip kuleye vardınız. Kapıdaki bakım levhasında yedek bataryanın hazır olduğu, ışığın yönünün elle ayarlanması gerektiği yazıyordu.",
+        "choices": [
+          {
+            "label": "Mekanizmayı kontrol et",
+            "next": "prepare0"
+          },
+          {
+            "label": "Kaptanla bağlantı kur",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route2": {
+        "text": "Plandaki kesik çizgiyi izleyince ağaçların arasında bakım yolunu buldun. Ece ile kuleye ulaştığınızda kapıdaki levhayı okudunuz: Yedek batarya doluydu, ancak ışığın yönünü otomatik ayarlayan motor arızalıydı.",
+        "choices": [
+          {
+            "label": "Mekanizmayı kontrol et",
+            "next": "prepare0"
+          },
+          {
+            "label": "Kaptanla bağlantı kur",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "prepare0": {
+        "text": "Elektrik panosunu açmadan bakım planını inceledin. Lamba elle yönlendirilebiliyordu; Ece ayrıca girişteki sinyal lambasını gösterdi. Gemiyi ya ana ışıkla uzaktan yönlendirebilir ya da iskeleden güvenli geçidi işaretleyebilirdiniz.",
+        "choices": [
+          {
+            "label": "Ana ışığı hizala",
+            "next": "action0"
+          },
+          {
+            "label": "İskelede sinyal hazırla",
+            "next": "action1"
+          }
+        ]
+      },
+      "prepare1": {
+        "text": "Telsizden kaptana ulaştın. Haritada iki güvenli işaret noktası belirledi: kulenin ışık hattı ve kayalıkların dışındaki iskele. Ece, girişteki taşınabilir sinyal lambasını kontrol etti; iki yöntem de artık uygulanabilirdi.",
+        "choices": [
+          {
+            "label": "Ana ışığı hizala",
+            "next": "action0"
+          },
+          {
+            "label": "İskelede sinyal hazırla",
+            "next": "action1"
+          }
+        ]
+      },
+      "action0": {
+        "text": "Ece lambayı yedek bataryayla çalıştırırken el çarkını plandaki açıya çevirdin. Işık kayalıklardan uzak, güvenli kanala düştü. Kaptan ışığı gördüğünü bildirdi; şimdi geçiş boyunca nasıl haberleşeceğinize karar vermeliydiniz.",
+        "choices": [
+          {
+            "label": "Telsizle adım adım anlat",
+            "next": "resolve0"
+          },
+          {
+            "label": "Işık kodunu kararlaştır",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "action1": {
+        "text": "Sinyal lambasını alıp Ece ile iskeleye döndün. Sabit korkuluğa dayadığınız ışık, kaptanın haritasındaki giriş noktasını gösteriyordu. Gemi güvenli kanalın önüne geldi; geçiş sırasında kullanacağınız haberleşme yöntemini seçmeliydiniz.",
+        "choices": [
+          {
+            "label": "Telsizle adım adım anlat",
+            "next": "resolve0"
+          },
+          {
+            "label": "Işık kodunu kararlaştır",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "resolve0": {
+        "text": "Kaptana haritadaki şamandıraları sırayla tarif ettin; her dönüşü telsizden doğruladı. Gemi kayalıkları geçip limana yanaştığında Ece derin bir nefes aldı. Sabah, muhtar aynı tehlikenin yeniden yaşanmaması için yardımını istedi.",
+        "choices": [
+          {
+            "label": "Fener onarımını örgütle",
+            "next": "end0"
+          },
+          {
+            "label": "Yedek kılavuz planla",
+            "next": "end1"
+          }
+        ]
+      },
+      "resolve1": {
+        "text": "Kaptanla kısa ışığın devam, uzun ışığın dur anlamına geldiğini telsizden doğruladınız. İşaretleri izleyen gemi limana ulaştı. Ertesi sabah muhtar, bu kez şanslı olduklarını söyleyip daha kalıcı bir güvenlik planı istedi.",
+        "choices": [
+          {
+            "label": "Fener onarımını örgütle",
+            "next": "end0"
+          },
+          {
+            "label": "Yedek kılavuz planla",
+            "next": "end1"
+          }
+        ]
+      },
+      "end0": {
+        "text": "Bakım planını yetkili elektrikçiye teslim edip köylülerle onarım için malzeme topladın. Bir hafta sonra fener otomatik olarak yanıyordu. Ece ilk nöbete seni çağırdı; bu kez ufuktaki gemileri telaşla değil, sıcak çay eşliğinde izlediniz.",
+        "choices": []
+      },
+      "end1": {
+        "text": "Ece ile güvenli kanalın haritasını yenileyip sinyal lambası için bir nöbet çizelgesi hazırladınız. Fener onarılana kadar liman böyle çalıştı. Aylar sonra geri döndüğünde iskeledeki kılavuz defterinde ikinizin de adı vardı.",
+        "choices": []
+      }
+    }
+  },
+  "theme_fantasy": {
+    "title": "Ay Ağacının Tohumu",
+    "nodes": {
+      "start": {
+        "text": "{name}, ay ağacının ışığı sönmeye başlayınca ormanın patikaları da silikleşti. Bekçi sana gümüş bir tohum ve küçük bir fener verdi. Tohum yalnızca hatırlanan bir iyilikle uyanırdı; bunu nasıl yapacağını üç eski dost bilebilirdi.",
+        "choices": [
+          {
+            "label": "Göl bekçisine git",
+            "next": "route0"
+          },
+          {
+            "label": "Tilkinin yuvasına uğra",
+            "next": "route1"
+          },
+          {
+            "label": "Yıldız gözlemcisine danış",
+            "next": "route2"
+          }
+        ]
+      },
+      "route0": {
+        "text": "Göl bekçisi, çocukken yaralı bir kuşa nasıl yardım ettiğini anlatmanı istedi. Hatıranı duyunca suyun üzerinde ince bir yol belirdi. Yoldan dönüp ağaca vardığında tohumun ilk kez ısındığını fark ettin.",
+        "choices": [
+          {
+            "label": "Hatıranı ağaca anlat",
+            "next": "prepare0"
+          },
+          {
+            "label": "Orman dostlarını çağır",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route1": {
+        "text": "Tilki, kışın yuvasının önüne bıraktığın su kabını hâlâ saklıyordu. O günü birlikte hatırlayınca tohum avucunda ısındı. Tilki seni ağaca kadar geçirdi; köklerdeki solgun çizgiler ilk kez görünür oldu.",
+        "choices": [
+          {
+            "label": "Hatıranı ağaca anlat",
+            "next": "prepare0"
+          },
+          {
+            "label": "Orman dostlarını çağır",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route2": {
+        "text": "Gözlemci, bir zamanlar kaybolan çırağına yolu gösterdiğini hatırlattı. Sen konuşurken tohum ısındı, yıldız haritasında ağacın köklerine benzeyen çizgiler parladı. Haritayı yanına alıp bekçinin yanına döndün.",
+        "choices": [
+          {
+            "label": "Hatıranı ağaca anlat",
+            "next": "prepare0"
+          },
+          {
+            "label": "Orman dostlarını çağır",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "prepare0": {
+        "text": "Elini kabuğa koyup hatıranı anlattın. Tohumdan çıkan ince ışık köklere uzandı; bekçi bunun yeterli olduğunu söyledi. Şimdi tohumu tek bir güçlü fidana dönüştürebilir ya da ışığını çevredeki üç fidana paylaştırabilirdin.",
+        "choices": [
+          {
+            "label": "Yeni fidanı köklendir",
+            "next": "action0"
+          },
+          {
+            "label": "Işığı üç fidana böl",
+            "next": "action1"
+          }
+        ]
+      },
+      "prepare1": {
+        "text": "Bekçi, çağrını ormanın küçük çanıyla duyurdu. Gelen dostlar iyiliklerini sırayla hatırlarken tohum ışıldadı. Kökler uyandı; bekçi sana iki yol gösterdi: tek güçlü fidan veya ışığı paylaşan üç küçük fidan.",
+        "choices": [
+          {
+            "label": "Yeni fidanı köklendir",
+            "next": "action0"
+          },
+          {
+            "label": "Işığı üç fidana böl",
+            "next": "action1"
+          }
+        ]
+      },
+      "action0": {
+        "text": "Tohumu yaşlı ağacın yanındaki yumuşak toprağa ektin. Gümüş yapraklı bir fidan yükseldi; kökleri eski ağaca bağlanınca ışık patikalara geri döndü. Bekçi, ışığın sabaha kadar korunması gerektiğini hatırlattı.",
+        "choices": [
+          {
+            "label": "Dostlarla nöbet tut",
+            "next": "resolve0"
+          },
+          {
+            "label": "Fenerlerden halka kur",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "action1": {
+        "text": "Bekçinin gösterdiği üç fidanı tohumun çevresine yerleştirdin. Gümüş ışık köklerden geçerek üçünü de aydınlattı; silinen yollar yeniden belirdi. Ancak rüzgâr artıyordu, yeni ışığı sabaha kadar korumalıydın.",
+        "choices": [
+          {
+            "label": "Dostlarla nöbet tut",
+            "next": "resolve0"
+          },
+          {
+            "label": "Fenerlerden halka kur",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "resolve0": {
+        "text": "Bekçi dostlarını yeniden çağırdı. Sırayla hatıralar anlatıp köklerin çevresinde nöbet tuttunuz; her ses ışığı biraz güçlendirdi. Güneş doğduğunda ağaçlar artık kendi başlarına parlıyordu. Geriye bu geceyi nasıl hatırlayacağınız kalmıştı.",
+        "choices": [
+          {
+            "label": "Hatıra defteri başlat",
+            "next": "end0"
+          },
+          {
+            "label": "Yıllık buluşma düzenle",
+            "next": "end1"
+          }
+        ]
+      },
+      "resolve1": {
+        "text": "Bekçi fenerine üç küçük fener daha ekledi. Ağaçların çevresine kurduğunuz halka, rüzgâr kesilene kadar ışığı korudu. Sabah kökler toprağa iyice tutunmuştu; şimdi bu iyiliklerin unutulmamasını sağlayabilirdin.",
+        "choices": [
+          {
+            "label": "Hatıra defteri başlat",
+            "next": "end0"
+          },
+          {
+            "label": "Yıllık buluşma düzenle",
+            "next": "end1"
+          }
+        ]
+      },
+      "end0": {
+        "text": "Bekçi sana kabuktan yapılmış boş bir defter getirdi. İlk sayfaya bu geceyi yazdın; dostların kendi hatıralarını ekledi. Defter ağacın kovuğunda kaldı. Yolunu kaybedenler artık hem patikayı hem birbirlerine yardım etmenin bir yolunu buluyordu.",
+        "choices": []
+      },
+      "end1": {
+        "text": "Her ilkbahar aynı gece ağaçların altında buluşmaya söz verdiniz. Ertesi yıl döndüğünde tilkinin yavruları da oradaydı. Herkes bir iyilik anlattı; patikalar yeniden ışıldarken ormanın hafızasının tek bir kişiye bağlı olmadığını gördün.",
+        "choices": []
+      }
+    }
+  },
+  "theme_mystery": {
+    "title": "On Üçüncü Mektup",
+    "nodes": {
+      "start": {
+        "text": "{name}, kütüphaneci Selin kapanışta seni yardımına çağırdı. Arşiv kitabı üç gecedir başka bir rafta bulunuyordu; içindeki imzasız not, yarın tadilata kapanacak saat kulesinde bir aile emaneti olduğunu söylüyordu.",
+        "choices": [
+          {
+            "label": "Kitabın kayıtlarını incele",
+            "next": "route0"
+          },
+          {
+            "label": "Gece görevlisiyle konuş",
+            "next": "route1"
+          },
+          {
+            "label": "Kule görevlisine danış",
+            "next": "route2"
+          }
+        ]
+      },
+      "route0": {
+        "text": "Ödünç defterinde kitabı son alanın eski saat ustası olduğunu gördün. Kenara yazdığı dolap numarasını Selin’e gösterdin. Kule görevlisiyle görüştünüz; numaranın kulenin bakım dolabına ait olduğunu doğrulayıp size giriş izni verdi. Selin gece görevlisini arayınca kitabı dikkat çekmek için taşıdığını da öğrendiniz.",
+        "choices": [
+          {
+            "label": "Selin ile kuleye git",
+            "next": "prepare0"
+          },
+          {
+            "label": "Ustayı önce telefonla ara",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route1": {
+        "text": "Gece görevlisi kitabı tadilat sırasında bulduğunu, raftaki numarayı anlamanızı umduğunu itiraf etti. Selin imzasız not yüzünden kaygılandığını söyleyince özür diledi. Bakım dolabının numarasını ve kule görevlisinin izin belgesini size verdi.",
+        "choices": [
+          {
+            "label": "Selin ile kuleye git",
+            "next": "prepare0"
+          },
+          {
+            "label": "Ustayı önce telefonla ara",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route2": {
+        "text": "Kule görevlisi nottaki el yazısını emekli saat ustasının yazısına benzetti. Bakım dolabının numarasını kitapta bulunca bağlantı kesinleşti. Selin’i arayıp yanına çağırdın; görevli ikinize dolabı inceleme izni verdi. Selin gece görevlisini arayınca kitabı dikkat çekmek için taşıdığını da öğrendiniz.",
+        "choices": [
+          {
+            "label": "Selin ile kuleye git",
+            "next": "prepare0"
+          },
+          {
+            "label": "Ustayı önce telefonla ara",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "prepare0": {
+        "text": "Selin ile kulede buluştunuz; görevli bakım dolabını açtı. İçinde on üç mühürlü mektup ve ustanın teslim defteri vardı. Alıcıların soyadı Selin’inkiyle aynıydı. Kutuyu açmadan önce kime ait olduğunu doğrulamalıydınız.",
+        "choices": [
+          {
+            "label": "Teslim defterini karşılaştır",
+            "next": "action0"
+          },
+          {
+            "label": "Aile kayıtlarına başvur",
+            "next": "action1"
+          }
+        ]
+      },
+      "prepare1": {
+        "text": "Telefondaki usta kutuyu unutmadığını, yanlış aileye teslim etmekten çekindiğini anlattı. Selin ile kuleye gidince görevli dolabı açtı: On üç mektup ve teslim defteri duruyordu. Usta, alıcının kimliğini doğrulamanızı rica etti.",
+        "choices": [
+          {
+            "label": "Teslim defterini karşılaştır",
+            "next": "action0"
+          },
+          {
+            "label": "Aile kayıtlarına başvur",
+            "next": "action1"
+          }
+        ]
+      },
+      "action0": {
+        "text": "Defterdeki adresi Selin’in getirdiği aile fotoğrafının arkasındaki adresle karşılaştırdınız. İkisi aynıydı; mektupları büyükannesi yazmıştı. Görevli kutuyu Selin’e teslim etti. Selin, önce yalnız okuyabilmek için senden biraz zaman istedi.",
+        "choices": [
+          {
+            "label": "Kütüphanede sessizce bekle",
+            "next": "resolve0"
+          },
+          {
+            "label": "Teslim kaydını tamamla",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "action1": {
+        "text": "Selin evdeki aile kayıtlarını telefonundan açtı. Büyükannesinin adı, adresi ve tarihleri teslim defteriyle uyuşuyordu. Görevli kutuyu ona verdi. Selin teşekkür edip mektupları önce kimseyle paylaşmadan okumak istediğini söyledi.",
+        "choices": [
+          {
+            "label": "Kütüphanede sessizce bekle",
+            "next": "resolve0"
+          },
+          {
+            "label": "Teslim kaydını tamamla",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "resolve0": {
+        "text": "Kütüphaneye dönüp Selin’i bekledin. Akşam geldiğinde, büyükannesinin başka bir şehirde öğretmenlik yaptığını öğrendiğini anlattı. Mektuplar ailede kalacaktı; fakat kulenin geçmişini anlatan teslim defterinin korunmasını istiyordu.",
+        "choices": [
+          {
+            "label": "Defteri arşive kazandır",
+            "next": "end0"
+          },
+          {
+            "label": "İzinli bir sergi hazırla",
+            "next": "end1"
+          }
+        ]
+      },
+      "resolve1": {
+        "text": "Görevliyle kutunun teslim tutanağını hazırlayıp bir kopyasını Selin’e bıraktın. Ertesi gün Selin mektupların aile sırları olduğunu, yayımlanmayacağını söyledi. Buna karşılık teslim defterinin kasabanın tarihine katılmasına izin verdi.",
+        "choices": [
+          {
+            "label": "Defteri arşive kazandır",
+            "next": "end0"
+          },
+          {
+            "label": "İzinli bir sergi hazırla",
+            "next": "end1"
+          }
+        ]
+      },
+      "end0": {
+        "text": "Selin’in izniyle defteri tarayıp arşive kaydettiniz; mektuplar onun evinde kaldı. Gece görevlisi de kitabı doğru rafına yerleştirdi. Bir hafta sonra Selin seni yeni aile fotoğraflarını görmeye çağırdı. Bu kez ortada çözülecek bir sır yoktu.",
+        "choices": []
+      },
+      "end1": {
+        "text": "Selin ve kule görevlisiyle yalnızca onaylanan defter sayfalarından küçük bir sergi hazırladınız. Ziyaretçiler mektupları değil, kasabanın unutulan emanet geleneğini tanıdı. Tadilat bittiğinde sergi kuleye taşındı; aileye ait kutu ise Selin’de kaldı.",
+        "choices": []
+      }
+    }
+  },
+  "theme_scifi": {
+    "title": "Son Sinyal",
+    "nodes": {
+      "start": {
+        "text": "{name}, hizmet dışı bırakılan yörünge istasyonunda tahliye bekliyordun. Kurtarma gemisinin otomatik çağrısı adını tekrarlıyordu, fakat gemi seni bulamıyordu. Düşük güçlü telsizin çalışıyordu; kalan enerji ya yön antenine ya kaçış kapsülüne yetecekti.",
+        "choices": [
+          {
+            "label": "Çağrının verisini çöz",
+            "next": "route0"
+          },
+          {
+            "label": "Hangardaki kaydı incele",
+            "next": "route1"
+          },
+          {
+            "label": "Seyir bilgisayarını sorgula",
+            "next": "route2"
+          }
+        ]
+      },
+      "route0": {
+        "text": "Çağrının zaman damgası yeniydi; eski bir kayıt dinlemiyordun. Geminin mesajı, konum alıcısının hasarlı olduğunu gösterdi. Düşük güçlü telsizden ses bağlantısı kurdun, ancak kurtarma için daha kesin bir buluşma planı gerekiyordu.",
+        "choices": [
+          {
+            "label": "Enerji hesabını doğrula",
+            "next": "prepare0"
+          },
+          {
+            "label": "Pilotla rota belirle",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route1": {
+        "text": "Hangar ekranı kapsülün bakım testini geçtiğini gösteriyordu. Yanındaki ekranda kurtarma gemisinin çağrı frekansını buldun. Pilot telsizden yanıt verdi: Konum alıcısı arızalıydı, fakat geminin elle yönlendirilen kameraları çalışıyordu.",
+        "choices": [
+          {
+            "label": "Enerji hesabını doğrula",
+            "next": "prepare0"
+          },
+          {
+            "label": "Pilotla rota belirle",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route2": {
+        "text": "Seyir bilgisayarı geminin çağrı kodunu doğruladı ve telsizi doğru frekansa ayarladı. Pilot, hasarlı konum alıcısı yüzünden istasyonu göremediğini anlattı. Kamera ve elle kenetlenme sistemi sağlamdı; güvenilir bir işaret bekliyordu.",
+        "choices": [
+          {
+            "label": "Enerji hesabını doğrula",
+            "next": "prepare0"
+          },
+          {
+            "label": "Pilotla rota belirle",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "prepare0": {
+        "text": "Bilgisayar yaşam desteğine ayrılan enerjiyi hesaptan çıkardı. Geriye tek kurtarma hamlesi kalıyordu: yön anteni gemiye kesin bir ışık işareti verebilir, kapsül ise pilotun kamerayla izleyebileceği kısa bir rota uçabilirdi.",
+        "choices": [
+          {
+            "label": "Yön antenini etkinleştir",
+            "next": "action0"
+          },
+          {
+            "label": "Kaçış kapsülünü hazırla",
+            "next": "action1"
+          }
+        ]
+      },
+      "prepare1": {
+        "text": "Pilot iki güvenli buluşma hesabını telsizden gönderdi. Antenin ışığıyla gemiyi istasyona getirebilir veya kapsülle geminin önündeki sabit noktaya gidebilirdin. Bilgisayar her iki planın da yaşam desteği payını koruduğunu doğruladı.",
+        "choices": [
+          {
+            "label": "Yön antenini etkinleştir",
+            "next": "action0"
+          },
+          {
+            "label": "Kaçış kapsülünü hazırla",
+            "next": "action1"
+          }
+        ]
+      },
+      "action0": {
+        "text": "Antenin ışık vericisini pilota çevirdin; gemi işareti izleyip istasyona yaklaştı. Pilot hedefi kamerada sabitledi, otomatik yaklaşmayı durdurdu. Kenetlenmeden önce hız ve kilit göstergelerinin iki tarafta da doğrulanması gerekiyordu.",
+        "choices": [
+          {
+            "label": "Kontrol listesini birlikte oku",
+            "next": "resolve0"
+          },
+          {
+            "label": "Göstergeleri karşılıklı doğrula",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "action1": {
+        "text": "Kontrolleri tamamlayıp kapsülü belirlenen noktaya gönderdin. Pilot kamerayla seni buldu ve gemiyi yavaşça yaklaştırdı. Kapsülün telsizi açıktı; iki araç birleşmeden hız ve kilit göstergelerini doğrulamalıydınız.",
+        "choices": [
+          {
+            "label": "Kontrol listesini birlikte oku",
+            "next": "resolve0"
+          },
+          {
+            "label": "Göstergeleri karşılıklı doğrula",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "resolve0": {
+        "text": "Pilot maddeleri okurken kendi ekranındaki değerleri söyledin. Hız sıfırlandı, kilitler kapandı; basınç eşitlenince kurtarma gemisine geçtin. Sağlık kontrolünden sonra kaptan, istasyona ait kayıtları nasıl değerlendirmek istediğini sordu.",
+        "choices": [
+          {
+            "label": "Arızayı teknik rapora işle",
+            "next": "end0"
+          },
+          {
+            "label": "Mürettebat için rehber yaz",
+            "next": "end1"
+          }
+        ]
+      },
+      "resolve1": {
+        "text": "Kendi ekranındaki kilit sayısını pilotunkiyle karşılaştırdın. İkiniz de güvenli bağlantıyı doğrulayınca kapaklar açıldı ve gemiye geçtin. Dinlendikten sonra kaptan, bu deneyimin bir sonraki kurtarmaya nasıl yardım edebileceğini sordu.",
+        "choices": [
+          {
+            "label": "Arızayı teknik rapora işle",
+            "next": "end0"
+          },
+          {
+            "label": "Mürettebat için rehber yaz",
+            "next": "end1"
+          }
+        ]
+      },
+      "end0": {
+        "text": "Gecikmeye yol açan alıcı arızasını ve kullandığınız hesapları rapora ekledin. Dünya’ya dönmeden önce filo yeni yedek işaretleyicileri onayladı. Pencereden küçülen istasyona baktığında son sinyalinin yalnızca seni kurtarmadığını biliyordun.",
+        "choices": []
+      },
+      "end1": {
+        "text": "Pilotla birlikte sade bir buluşma rehberi hazırladınız; her maddeyi simülatörde denediniz. Rehber yeni mürettebatın eğitimine eklendi. Dünya göründüğünde telsizden adını bir kez daha duydun; bu kez liman görevlisi seni karşılıyordu.",
+        "choices": []
+      }
+    }
+  },
+  "theme_horror": {
+    "title": "Üst Kattaki Radyo",
+    "nodes": {
+      "start": {
+        "text": "{name}, yağmurdan kaçıp eski bir pansiyonun açık kapısından girdin. Lobide bir misafir defteri, oda anahtarı ve üst kata çıkan merdiven vardı. Yukarıdaki radyo, az önce söylediğin cümleyi senin sesinle tekrarladı.",
+        "choices": [
+          {
+            "label": "Anahtarın odasını bul",
+            "next": "route0"
+          },
+          {
+            "label": "Misafir defterini incele",
+            "next": "route1"
+          },
+          {
+            "label": "Merdivenden sesi dinle",
+            "next": "route2"
+          }
+        ]
+      },
+      "route0": {
+        "text": "Anahtardaki yedi numarayı izleyip radyonun odasına girdin. Masada eski bir kaset ve bir uyarı vardı: Aynı ses tekrarlandıkça gece başa döner. Saat yeniden 23.10’u gösterince bunun bir şaka olmadığını anladın.",
+        "choices": [
+          {
+            "label": "Frekans notlarını çöz",
+            "next": "prepare0"
+          },
+          {
+            "label": "Tekrarlanan sesleri say",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route1": {
+        "text": "Defterin son sayfasında aynı tarih üç kez yazılmıştı. Altındaki not, yedi numaralı odadaki radyonun tekrarlarını saymanı söylüyordu. Anahtarı alıp yukarı çıktın; masadaki kasetin yanında saat her dakikada başa dönüyordu.",
+        "choices": [
+          {
+            "label": "Frekans notlarını çöz",
+            "next": "prepare0"
+          },
+          {
+            "label": "Tekrarlanan sesleri say",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route2": {
+        "text": "Lobideki anahtarı alıp merdivene çıktın. Basamakta durup dinleyince radyonun konuşmanı değil, nefes aldığın aralığı bile kopyaladığını fark ettin. Yedi numaralı oda aralıktı. İçerideki kasetin yanında duran not, saatin her tekrar sonunda geri döndüğünü açıklıyordu.",
+        "choices": [
+          {
+            "label": "Frekans notlarını çöz",
+            "next": "prepare0"
+          },
+          {
+            "label": "Tekrarlanan sesleri say",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "prepare0": {
+        "text": "Radyonun yanındaki çizelge iki kesintiyi işaret ediyordu: yeni bir melodi ve istasyonlar arasındaki cızırtı. Her ikisi de kayıtlı sesi bölebilirdi. Notun devamı açıktı: Saat ilerlemeye başlayınca tekrar konuşmayı bırakmalıydın.",
+        "choices": [
+          {
+            "label": "Yeni bir melodi mırıldan",
+            "next": "action0"
+          },
+          {
+            "label": "Düğmeyi cızırtıya çevir",
+            "next": "action1"
+          }
+        ]
+      },
+      "prepare1": {
+        "text": "Üçüncü tekrarda bir cızırtı oldu; saat bir saniye ilerledi. Radyonun yanındaki not, aynı etkinin kayıtta bulunmayan bir melodiyle de oluşacağını söylüyordu. Döngüyü böldükten sonra sessiz kalman gerektiğini de eklemişti.",
+        "choices": [
+          {
+            "label": "Yeni bir melodi mırıldan",
+            "next": "action0"
+          },
+          {
+            "label": "Düğmeyi cızırtıya çevir",
+            "next": "action1"
+          }
+        ]
+      },
+      "action0": {
+        "text": "Rastgele birkaç notayı mırıldandın; radyo onları yakalamaya çalışırken kayıt aksadı. Hemen sustun. Saat 23.11’e geçti ve koridordaki kapılar yerlerine oturdu. Dış kapıyı bulmak için artık gözlerine değil, çevrendeki işaretlere güvenmeliydin.",
+        "choices": [
+          {
+            "label": "Çıkış levhalarını izle",
+            "next": "resolve0"
+          },
+          {
+            "label": "Serin hava akımını izle",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "action1": {
+        "text": "Düğmeyi iki istasyonun arasında tuttun. Cızırtı sesini örttü ve saat 23.11’e ilerledi. Tek kelime etmeden koridora çıktın; daha önce boş görünen duvarda bir merdiven belirmişti. Dışarıya uzanan gerçek yolu bulmalıydın.",
+        "choices": [
+          {
+            "label": "Çıkış levhalarını izle",
+            "next": "resolve0"
+          },
+          {
+            "label": "Serin hava akımını izle",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "resolve0": {
+        "text": "Yeni görünür olan levhalar seni lobideki kapıya götürdü. Kapıyı açınca yağmurun dindiğini gördün. Dışarı adım attığında elindeki oda anahtarı soğudu; arkanı döndüğünde pansiyonun pencereleri tamamen karanlıktı.",
+        "choices": [
+          {
+            "label": "Pansiyonu yetkililere bildir",
+            "next": "end0"
+          },
+          {
+            "label": "Anahtarı müzeye götür",
+            "next": "end1"
+          }
+        ]
+      },
+      "resolve1": {
+        "text": "Merdivenlerden inip yüzüne vuran serin havayı izledin. Lobi kapısı aralıktı; sessizce dışarı çıktın. Elindeki anahtarın üzerinde artık yedi değil, binanın eski adresi yazıyordu. Karşıdaki sokak lambasının altında durup ilk kez rahatça nefes aldın.",
+        "choices": [
+          {
+            "label": "Pansiyonu yetkililere bildir",
+            "next": "end0"
+          },
+          {
+            "label": "Anahtarı müzeye götür",
+            "next": "end1"
+          }
+        ]
+      },
+      "end0": {
+        "text": "Ertesi sabah binayı yetkililere gösterdin; kapıya giriş yasağı kondu ve anahtarı teslim ettin. O gece kendi odandaki saat hiç geri dönmedi. Yalnızca haberlerdeki pansiyon görüntüsünde üst katın perdesi bir anlığına kıpırdadı.",
+        "choices": []
+      },
+      "end1": {
+        "text": "Müze görevlisi anahtarı eski pansiyon kayıtlarıyla eşleştirdi. Binanın yıllar önce kapandığını söyleyip anahtarı camlı bir kutuya koydu. Çıkarken duvardaki saat bir kez durdu; görevli kutuyu örttü ve akreple yelkovan yeniden ilerledi.",
+        "choices": []
+      }
+    }
+  },
+  "theme_romantic": {
+    "title": "Yağmurdan Sonra",
+    "nodes": {
+      "start": {
+        "text": "{name}, sahafın rafındaki gezi kitabını açınca içinden kapalı bir zarf düştü. Tam o sırada Deniz kaybettiği mektubu sormaya geldi. Dışarıda yağmur başlamıştı; dükkânın kapanmasına yalnızca on dakika vardı.",
+        "choices": [
+          {
+            "label": "Zarfı Deniz’e uzat",
+            "next": "route0"
+          },
+          {
+            "label": "Kitabın sahibini sor",
+            "next": "route1"
+          },
+          {
+            "label": "Şemsiyeni paylaşmayı öner",
+            "next": "route2"
+          }
+        ]
+      },
+      "route0": {
+        "text": "Zarfı açmadan uzatınca Deniz rahatladı. Bunun eski öğretmenine yazdığı teşekkür mektubu olduğunu söyledi; adres için kitaba bakarken unutmuştu. Kitabı satın aldıktan sonra ortak gezi merakınız üzerine sohbetiniz sürdü. Yakında konuşmaya devam edebileceğiniz iki yer vardı.",
+        "choices": [
+          {
+            "label": "Köşe kafesine geç",
+            "next": "prepare0"
+          },
+          {
+            "label": "Kapalı pasajda yürü",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route1": {
+        "text": "Sahaf kitabın Deniz’e ayrıldığını söyledi. Zarfı hemen teslim ettin; Deniz eski öğretmeninin adresini ararken orada unuttuğunu anlattı. Kitaptaki kıyı kasabası ikinizin de ilgisini çekti. Deniz kitabı satın alırken dükkânın kapanış saati geldi.",
+        "choices": [
+          {
+            "label": "Köşe kafesine geç",
+            "next": "prepare0"
+          },
+          {
+            "label": "Kapalı pasajda yürü",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route2": {
+        "text": "Önce zarfı iade ettin. Deniz kitabı satın alırken şemsiyeni paylaşmayı önerdin; teşekkür edip kabul etti. Saçak altında kitaptaki kıyı kasabasından söz ettiniz. İkiniz de orayı görmeyi istiyordunuz; sohbeti sürdürebileceğiniz yerler aramaya başladınız.",
+        "choices": [
+          {
+            "label": "Köşe kafesine geç",
+            "next": "prepare0"
+          },
+          {
+            "label": "Kapalı pasajda yürü",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "prepare0": {
+        "text": "Kafede cam kenarındaki masaya oturdunuz. Deniz mektubu güvenle çantasına koydu; ikiniz de sohbetin tesadüfi tanışmanın ötesine geçmesini istiyordunuz. Masadaki kitap, konuşmak için doğal bir başlangıç sunuyordu.",
+        "choices": [
+          {
+            "label": "Sevdiğin yolculuğu anlat",
+            "next": "action0"
+          },
+          {
+            "label": "Deniz’in önerisini dinle",
+            "next": "action1"
+          }
+        ]
+      },
+      "prepare1": {
+        "text": "Pasajın cam tavanı yağmurdan koruyordu. Yavaş yürürken Deniz mektubu çantasına yerleştirdi ve kitabı sana gösterdi. Yan yana bir bankta durdunuz; kalabalığın uğultusu içinde sohbet için sakin bir köşe bulmuştunuz.",
+        "choices": [
+          {
+            "label": "Sevdiğin yolculuğu anlat",
+            "next": "action0"
+          },
+          {
+            "label": "Deniz’in önerisini dinle",
+            "next": "action1"
+          }
+        ]
+      },
+      "action0": {
+        "text": "Kıyıda kaybolup küçük bir kitapçı sayesinde yolunu bulduğun günü anlattın. Deniz gülümseyip cumartesi sahafın düzenlediği kitap yürüyüşünden söz etti. Birlikte katılmayı önerdi; programda hem okuma buluşması hem kısa bir mahalle turu vardı.",
+        "choices": [
+          {
+            "label": "Okuma buluşmasına katıl",
+            "next": "resolve0"
+          },
+          {
+            "label": "Mahalle turunu seç",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "action1": {
+        "text": "Deniz’in sevdiği gezi yazısını neden tekrar okuduğunu dinledin. Bir şehri tanımanın küçük ayrıntılardan başladığını düşünüyordu. Cumartesi sahafın kitap etkinliğine birlikte gitmenizi önerdi; okuma buluşması veya mahalle turu arasında seçim yapabilirdiniz.",
+        "choices": [
+          {
+            "label": "Okuma buluşmasına katıl",
+            "next": "resolve0"
+          },
+          {
+            "label": "Mahalle turunu seç",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "resolve0": {
+        "text": "Cumartesi aynı masada farklı kitaplardan kısa bölümler okudunuz. Deniz senin seçtiğin satırı defterine yazmak için izin istedi. Buluşma bittiğinde ikiniz de yeniden görüşmek istediğinizi söylediniz; sıradaki planı birlikte yapabilirdiniz.",
+        "choices": [
+          {
+            "label": "Bir sonraki kitabı seç",
+            "next": "end0"
+          },
+          {
+            "label": "Kıyıya günübirlik gezi öner",
+            "next": "end1"
+          }
+        ]
+      },
+      "resolve1": {
+        "text": "Cumartesi rehberle eski sokakları dolaşırken Deniz’le aynı ayrıntılarda durup güldünüz. Tur sonunda küçük meydanda biraz daha oturdunuz. İkiniz de yeniden görüşmek istediğinizi açıkça söylediniz; artık ortak bir plan kurmak kolaydı.",
+        "choices": [
+          {
+            "label": "Bir sonraki kitabı seç",
+            "next": "end0"
+          },
+          {
+            "label": "Kıyıya günübirlik gezi öner",
+            "next": "end1"
+          }
+        ]
+      },
+      "end0": {
+        "text": "Her hafta bir bölüm okuyup konuşacağınız bir kitap seçtiniz. Sonraki buluşmada Deniz, arasına kuru bir yaprak koyduğu sayfayı sana gösterdi. İlk günkü yağmuru hatırlayıp gülümsediniz; yakınlığınız büyük sözlerden çok, birbirinize ayırdığınız zamanla büyüyordu.",
+        "choices": []
+      },
+      "end1": {
+        "text": "Deniz fikri beğendi; uygun günü ve dönüş saatini birlikte belirlediniz. Bir hafta sonra kıyı kasabasındaki küçük kitapçının önündeydiniz. Yeni bir zarf bu kez kaybolmadı: Deniz, öğretmenine göndereceği kartı birlikte seçmenizi istedi.",
+        "choices": []
+      }
+    }
+  },
+  "theme_historical": {
+    "title": "Kervanın Mührü",
+    "nodes": {
+      "start": {
+        "text": "{name}, eski bir liman kentinde kâtip çırağıydın. Akşam yola çıkacak kervanın izin belgesi teslim edilmemişti. Ustan sana belgenin kayıt numarasını verdi; kapılar kapanmadan önce hangi durakta kaldığını bulmalıydın.",
+        "choices": [
+          {
+            "label": "Pazardaki yazıcıya sor",
+            "next": "route0"
+          },
+          {
+            "label": "Handaki kuryeyi bul",
+            "next": "route1"
+          },
+          {
+            "label": "Liman deposuna git",
+            "next": "route2"
+          }
+        ]
+      },
+      "route0": {
+        "text": "Yazıcı, kuryenin belgeyi yağmurdan korumak için dükkânına bıraktığını söyledi. Paketi açınca suyun mührü dağıttığını gördün; kayıt numarası ve yük listesi okunuyordu. Belgeyi aldın, ancak kapı için doğrulama gerekiyordu.",
+        "choices": [
+          {
+            "label": "Arşiv kaydını getir",
+            "next": "prepare0"
+          },
+          {
+            "label": "Tüccar nüshalarını topla",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route1": {
+        "text": "Hasta kurye, han odasında sakladığı paketi sana verdi. Yolculukta sızan su mührü silmişti; kayıt numarası ve yük listesi sağlamdı. Hancı teslim saatine tanıklık edebilirdi, fakat izin belgesini yeniden doğrulatman gerekiyordu.",
+        "choices": [
+          {
+            "label": "Arşiv kaydını getir",
+            "next": "prepare0"
+          },
+          {
+            "label": "Tüccar nüshalarını topla",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route2": {
+        "text": "Depocu yanlış sandıkla gelen paketi raftan indirdi. Yol boyunca ıslanan belgenin mührü seçilmiyordu; numarası ve yük listesi hâlâ okunuyordu. Paketi teslim aldığına dair kaydı da yanına alıp doğrulama için yola çıktın.",
+        "choices": [
+          {
+            "label": "Arşiv kaydını getir",
+            "next": "prepare0"
+          },
+          {
+            "label": "Tüccar nüshalarını topla",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "prepare0": {
+        "text": "Arşiv memuru numarayı günlük kayıtta buldu: İzin on iki ticaret sandığı içindi. Onaylı bir suret hazırlayıp seni kapı kâtibine gönderdi. Orada kervanın yükleriyle belgedeki bilgileri son kez karşılaştırmanız istendi.",
+        "choices": [
+          {
+            "label": "Sandıkları tek tek say",
+            "next": "action0"
+          },
+          {
+            "label": "Araba işaretlerini karşılaştır",
+            "next": "action1"
+          }
+        ]
+      },
+      "prepare1": {
+        "text": "Tüccarların nüshalarını resmî kâtibe götürdün. Kâtip numaraları kendi kaydıyla karşılaştırıp on iki ticaret sandığı için doğrulama yazısı hazırladı. Kapıya vardığında son görev, yüklerin bu belgeye uyup uymadığını denetlemekti.",
+        "choices": [
+          {
+            "label": "Sandıkları tek tek say",
+            "next": "action0"
+          },
+          {
+            "label": "Araba işaretlerini karşılaştır",
+            "next": "action1"
+          }
+        ]
+      },
+      "action0": {
+        "text": "Sayımı tamamladığında on üç sandık buldun. Son sandıkta ticaret mührü yoktu; kervan başı onun yol azığı olabileceğini söyledi. Kapı kâtibi tahminle işlem yapmayacağını belirtti. Sandığın içeriğini ve sahibini doğrulamalıydın.",
+        "choices": [
+          {
+            "label": "Depo dökümünü incele",
+            "next": "resolve0"
+          },
+          {
+            "label": "Yük sorumlusunu çağır",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "action1": {
+        "text": "Arabalardaki işaretler listedeki on iki sandığı karşılıyordu; fakat son arabanın arkasında işaretsiz bir sandık daha duruyordu. Kervan başı azık olabileceğini söyledi. Kapı kâtibi geçişten önce kesin bir açıklama istedi.",
+        "choices": [
+          {
+            "label": "Depo dökümünü incele",
+            "next": "resolve0"
+          },
+          {
+            "label": "Yük sorumlusunu çağır",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "resolve0": {
+        "text": "Depo dökümü sandığın tüccarların ortak erzak sandığı olduğunu gösterdi. Sorumlunun huzurunda açılınca kuru yiyecekler kaydı doğruladı. Kapı kâtibi erzağı ayrı kaydedebileceğini ya da sonraki hizmet arabasıyla gönderebileceğinizi söyledi.",
+        "choices": [
+          {
+            "label": "Erzağı ayrı kaydettir",
+            "next": "end0"
+          },
+          {
+            "label": "Hizmet arabasını ayarla",
+            "next": "end1"
+          }
+        ]
+      },
+      "resolve1": {
+        "text": "Yük sorumlusu sandığın ortak erzak olduğunu açıkladı ve deposundaki kayıtla içeriğini gösterdi. Eksik bilgi tamamlanınca kapı kâtibi iki yol sundu: Erzak için ek kayıt hazırlamak veya sandığı sonraki hizmet arabasına vermek.",
+        "choices": [
+          {
+            "label": "Erzağı ayrı kaydettir",
+            "next": "end0"
+          },
+          {
+            "label": "Hizmet arabasını ayarla",
+            "next": "end1"
+          }
+        ]
+      },
+      "end0": {
+        "text": "Kapı kâtibi erzak kaydını tamamlayıp belgeye yeni mühür vurdu. On üç sandık da açıklığa kavuşunca kervan gün batmadan ayrıldı. Ustan akşam defterini sana uzattı; ilk kez bir kaydın altına kendi adını yazdın.",
+        "choices": []
+      },
+      "end1": {
+        "text": "Hizmet arabacısıyla buluşma yerini ve teslim saatini yazılı olarak belirledin. Kervan on iki sandıkla zamanında çıktı; erzak da ilk konak yerine ulaştı. Ustan, işi hızlandırmanın kaydı atlamak değil, doğru yolu bulmak olduğunu söyledi.",
+        "choices": []
+      }
+    }
+  },
+  "theme_comedy": {
+    "title": "Belediye Başkanının Keçisi",
+    "nodes": {
+      "start": {
+        "text": "{name}, kasaba festivalinin sunucusuydun. Açılışa on dakika kala keçi Köpük, başkanın konuşma dosyasını kapıp stantlara koştu. Bakıcısı Efe peşindeydi; bando ise prova yerine yanlışlıkla bir ninni çalıyordu.",
+        "choices": [
+          {
+            "label": "Köpük’ün izini sür",
+            "next": "route0"
+          },
+          {
+            "label": "Bando şefinden yardım iste",
+            "next": "route1"
+          },
+          {
+            "label": "Stant görevlilerine sor",
+            "next": "route2"
+          }
+        ]
+      },
+      "route0": {
+        "text": "Dosyadan düşen kâğıtları izleyip sebze standına ulaştın. Efe, Köpük’ü havuçla oyalayıp tasmasını tuttu. Başkanın dosyasını kurtardınız, fakat konuşma sayfası salatalık suyuna bulanmıştı. Efe keçiyi yanında tutarken yeni açılış planını düşünmeliydin.",
+        "choices": [
+          {
+            "label": "Başkanla kısa plan yap",
+            "next": "prepare0"
+          },
+          {
+            "label": "Program akışını gözden geçir",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route1": {
+        "text": "Şef müziği durdurup keçinin sebze standına gittiğini gösterdi. Efe ile oraya yetiştiniz; Köpük tasmasına kavuştu, dosya da kurtuldu. Ne yazık ki konuşma kâğıdı salatalık suyuyla okunmaz olmuştu. Açılışa hâlâ birkaç dakika vardı.",
+        "choices": [
+          {
+            "label": "Başkanla kısa plan yap",
+            "next": "prepare0"
+          },
+          {
+            "label": "Program akışını gözden geçir",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "route2": {
+        "text": "Stant görevlileri Köpük’ün havuç aradığını söyleyip sebzeciyi işaret etti. Efe orada keçiyi tasmasına aldı. Dosyayı tezgâhın altından çıkardınız; ıslanan konuşma okunmuyordu. Başkan sahnenin yanında, senden gelecek haberi bekliyordu.",
+        "choices": [
+          {
+            "label": "Başkanla kısa plan yap",
+            "next": "prepare0"
+          },
+          {
+            "label": "Program akışını gözden geçir",
+            "next": "prepare1"
+          }
+        ]
+      },
+      "prepare0": {
+        "text": "Başkan kâğıdı görünce, konuşmanın zaten fazla uzun olduğunu itiraf etti. Otuz saniyelik bir selamlama yapabilir ya da Efe’nin onayıyla Köpük’ü kısaca tanıtabilirdiniz. Efe, keçinin sahne kenarında sakin durabileceğini söyledi.",
+        "choices": [
+          {
+            "label": "Kısa bir selamlama yap",
+            "next": "action0"
+          },
+          {
+            "label": "Köpük’ü bakıcısıyla tanıt",
+            "next": "action1"
+          }
+        ]
+      },
+      "prepare1": {
+        "text": "Programda uzun konuşmadan sonra çocuk korosu vardı; başkan o bölümü aksatmak istemedi. Açılışı kısa bir selamlamaya veya Efe’nin eşlik edeceği keçi tanıtımına çevirmeyi kabul etti. Efe de Köpük’ün sahne kenarında durmasını uygun buldu.",
+        "choices": [
+          {
+            "label": "Kısa bir selamlama yap",
+            "next": "action0"
+          },
+          {
+            "label": "Köpük’ü bakıcısıyla tanıt",
+            "next": "action1"
+          }
+        ]
+      },
+      "action0": {
+        "text": "Mikrofona eğilip herkesi selamladın. Tam ikinci cümlede hoparlörden konuşman değil, prova ninnisi yükseldi. Ses görevlisi yanlış kaydı kapattı. Kalabalık gülüyordu; şef ritimle yardım edebilirdi, sahne görevlisi de elindeki megafonu sana uzatıyordu.",
+        "choices": [
+          {
+            "label": "Bandoyla çağrı ritmi kur",
+            "next": "resolve0"
+          },
+          {
+            "label": "Görevlinin megafonunu al",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "action1": {
+        "text": "Efe, Köpük’ü yanında tutarken festivalin en iştahlı konuğunu tanıttın. Keçi tam zamanında meledi, ama hoparlörden ninni geldi. Ses görevlisi kaydı kapattı. Şef ritimle yardım edebilirdi; sahne görevlisi ise elindeki megafonu sana uzatıyordu.",
+        "choices": [
+          {
+            "label": "Bandoyla çağrı ritmi kur",
+            "next": "resolve0"
+          },
+          {
+            "label": "Görevlinin megafonunu al",
+            "next": "resolve1"
+          }
+        ]
+      },
+      "resolve0": {
+        "text": "Şefin kısa ritminden sonra ön sıraya söylediğin duyuruyu arka sıralar tekrarladı. Böylece herkes çocuk korosunun yerini duydu. Başkan kahkahalar arasında elindeki programı gösterdi: Korodan sonra önce kortej mi başlayacaktı, stantlar mı açılacaktı?",
+        "choices": [
+          {
+            "label": "Korteje öncülük et",
+            "next": "end0"
+          },
+          {
+            "label": "Stant açılışını duyur",
+            "next": "end1"
+          }
+        ]
+      },
+      "resolve1": {
+        "text": "Görevlinin pilli megafonuyla kalan duyuruyu yaptın; ses bu kez tam gerektiği gibi çıktı. Çocuk korosu yerine geçti. Başkan, programı esnetebileceğinizi söyleyip korodan sonra önce korteji mi, stantları mı başlatmak istediğini sordu.",
+        "choices": [
+          {
+            "label": "Korteje öncülük et",
+            "next": "end0"
+          },
+          {
+            "label": "Stant açılışını duyur",
+            "next": "end1"
+          }
+        ]
+      },
+      "end0": {
+        "text": "Koro bitince bandonun önünde meydanı dolaştın. Köpük, Efe ile geriden yürüyordu; başkan dosyasını bu kez çantasından çıkarmadı. Festival sonunda sana gelecek yılın sunuculuğunu önerdi. Tek şartın vardı: Ninniler programda açıkça işaretlenecekti.",
+        "choices": []
+      },
+      "end1": {
+        "text": "Koronun ardından stantları açtın; ilk sıra sebzecinin önünde oluştu. Köpük’e yalnızca Efe’nin verdiği havuç ayrılmıştı. Akşam başkan festivalin hiç bu kadar neşeli olmadığını söyledi. Ertesi yılın dosyasına ilk sen yazdın: Keçiler için ayrı ikram masası.",
+        "choices": []
+      }
+    }
+  }
+}

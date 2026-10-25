@@ -44,3 +44,22 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 *.env
+# Local release signing credentials
+android/key.properties
+*.jks
+*.keystore
+
+node_modules/
+*-debug.log
+
+# Generated builds and platform caches at any depth
+**/build/
+**/.gradle/
+**/.kotlin/
+# Local environment variants; keep only the public template
+.env.*
+!.env.example
+
+# Local editor settings and migration backups
+.vscode/
+*.backup

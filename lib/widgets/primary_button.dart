@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String buttonText;
@@ -15,24 +14,15 @@ class PrimaryButton extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: padding ?? EdgeInsets.symmetric(horizontal: 10.w, vertical: 1.h),
-      child: SizedBox(
-        height: 6.h,
-        width: 60.w,
-        child: ElevatedButton(
-          onPressed: onPressed,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: buttonColor ?? Theme.of(context).primaryColor,
-            padding: EdgeInsets.symmetric(vertical: 1.4.h),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.w),
-            ),
-          ),
-          child: Text(buttonText, style: Theme.of(context).textTheme.labelLarge),
-        ),
+  Widget build(BuildContext context) => Padding(
+    padding: padding ?? const EdgeInsets.symmetric(vertical: 6),
+    child: SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(backgroundColor: buttonColor),
+        child: Text(buttonText, textAlign: TextAlign.center),
       ),
-    );
-  }
+    ),
+  );
 }
